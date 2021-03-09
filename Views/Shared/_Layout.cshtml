@@ -1,9 +1,20 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    
+    <base href="~/src/" >
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paul's Training Company</title>
+
+@{ 
+    string subTitle = "";
+    if (!string.IsNullOrEmpty(ViewBag.Title))
+    {
+        subTitle = ViewBag.Title + " - " ;
+    }
+}
+  <title>@subTitle Paul's Training Company</title>
   @Styles.Render("~/Content/css")
   @Scripts.Render("~/bundles/modernizr")
 </head>

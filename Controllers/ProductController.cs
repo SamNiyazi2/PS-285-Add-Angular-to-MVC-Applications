@@ -3,29 +3,38 @@ using System.Web.Mvc;
 
 namespace PTC.Controllers
 {
-  public class ProductController : Controller
-  {
-    public ActionResult Product() {
-      PTCViewModel vm = new PTCViewModel();
+    public class ProductController : Controller
+    {
+        public ActionResult Product()
+        {
+            PTCViewModel vm = new PTCViewModel();
 
-      vm.HandleRequest();
+            vm.HandleRequest();
 
-      return View(vm);
+            return View(vm);
+        }
+
+        public ActionResult Product_ang()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Product(PTCViewModel vm)
+        {
+            vm.HandleRequest();
+
+            // If everything is OK, update the model state on the page
+            if (vm.IsValid)
+            {
+                ModelState.Clear();
+            }
+            else
+            {
+                ModelState.Merge(vm.Messages);
+            }
+
+            return View(vm);
+        }
     }
-
-    [HttpPost]
-    public ActionResult Product(PTCViewModel vm) {
-      vm.HandleRequest();
-
-      // If everything is OK, update the model state on the page
-      if (vm.IsValid) {
-        ModelState.Clear();
-      }
-      else {
-        ModelState.Merge(vm.Messages);
-      }
-
-      return View(vm);
-    }
-  }
 }
