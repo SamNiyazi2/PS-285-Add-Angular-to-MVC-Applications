@@ -14,7 +14,6 @@ var ProductListComponent = /** @class */ (function () {
     }
     ProductListComponent = __decorate([
         core_1.Component({
-            selector: 'product-list',
             templateUrl: './product-list.component.html',
         })
     ], ProductListComponent);
