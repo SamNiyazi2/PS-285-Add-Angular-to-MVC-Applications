@@ -1,4 +1,5 @@
 "use strict";
+// 03/09/2021 04:10 pm - SSN - [20210309-1551] - [001] - M03-06 - Add product list component and HTML
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6,19 +7,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppComponent = void 0;
+exports.ProductListComponent = void 0;
 var core_1 = require("@angular/core");
-var AppComponent = /** @class */ (function () {
-    function AppComponent() {
-        this.name = 'Angular';
+var ProductListComponent = /** @class */ (function () {
+    function ProductListComponent() {
     }
-    AppComponent = __decorate([
+    ProductListComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "<h1>Hello {{name}}</h1><product-list></product-list>",
+            selector: 'product-list',
+            templateUrl: './product-list.component.html',
         })
-    ], AppComponent);
-    return AppComponent;
+    ], ProductListComponent);
+    return ProductListComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.ProductListComponent = ProductListComponent;
+//# sourceMappingURL=product-list.component.js.map
