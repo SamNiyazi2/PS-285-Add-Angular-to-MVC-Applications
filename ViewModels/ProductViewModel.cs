@@ -194,7 +194,7 @@ namespace PTC
             (SearchEntity.CategoryId == 0 ? true :
                  p.Category.CategoryId == SearchEntity.CategoryId) &&
             (string.IsNullOrEmpty(SearchEntity.ProductName) ? true :
-                 p.ProductName.StartsWith(SearchEntity.ProductName))).
+                 p.ProductName.ToLower().Contains(SearchEntity.ProductName))).
             OrderBy(p => p.ProductName).ToList();
 
         SetUIState(PDSAPageModeEnum.List);

@@ -24,6 +24,7 @@ var ProductListComponent = /** @class */ (function () {
         this.messages = [];
         this.searchCategories = [];
         this.searchEntity = new productSearch_1.ProductSearch();
+        this.haveProductRecords = false;
     }
     ProductListComponent.prototype.ngOnInit = function () {
         this.getProducts();
@@ -32,17 +33,24 @@ var ProductListComponent = /** @class */ (function () {
     };
     ProductListComponent.prototype.getProducts = function () {
         var _this = this;
-        this.productService.getProducts().subscribe(function (products) { return _this.products = products; }, function (errors) { return _this.handleErrors(errors); });
+        this.productService.getProducts().subscribe(function (products) {
+            _this.products = products;
+            _this.haveProductRecords = products && products.length > 0;
+        }, function (errors) { return _this.handleErrors(errors); });
     };
     ;
+    ProductListComponent.prototype.search = function () {
+        var _this = this;
+        this.productService.search(this.searchEntity).subscribe(function (products) { return _this.products = products; }, function (errors) { return _this.handleErrors(errors); });
+    };
+    ProductListComponent.prototype.resetSearch = function () {
+        this.searchEntity.categoryId = 0;
+        this.searchEntity.productName = '';
+        this.getProducts();
+    };
     ProductListComponent.prototype.getSearchCategories = function () {
         var _this = this;
-        this.categoryService.getSearchCategories().subscribe(function (categories) {
-            console.log('20210310-1401');
-            console.log('categories:');
-            console.log(categories);
-            _this.searchCategories = categories;
-        }, function (errors) { return _this.handleErrors(errors); });
+        this.categoryService.getSearchCategories().subscribe(function (categories) { return _this.searchCategories = categories; }, function (errors) { return _this.handleErrors(errors); });
     };
     ProductListComponent.prototype.handleErrors = function (errors) {
         this.messages = [];

@@ -1,6 +1,6 @@
 ﻿<h2>Products List</h2>
 
-<div class="row" *ngIf="products && products.length">
+<div class="row" *ngIf="haveProductRecords">
 
     <div class="col-xs-12">
         <div class="panel panel-primary">
@@ -29,7 +29,7 @@
             </div>
 
             <div class="panel-footer">
-                <button formnovalidate="formnovalidate" class="btn btn-sm btn-primary" (click)="serach()">
+                <button formnovalidate="formnovalidate" class="btn btn-sm btn-primary" (click)="search()">
                     <i class="glyphicon glyphicon-search"></i>
                     &nbsp; Search
                 </button>

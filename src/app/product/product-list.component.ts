@@ -40,25 +40,36 @@ export class ProductListComponent implements OnInit {
     searchCategories: Category[] = [];
     searchEntity: ProductSearch = new ProductSearch();
 
+    haveProductRecords = false;
 
     private getProducts() {
 
-        this.productService.getProducts().subscribe(products => this.products = products, errors => this.handleErrors(errors));
+        this.productService.getProducts().subscribe(products => {
+            this.products = products;
+            this.haveProductRecords = products && products.length > 0;
+        }, errors => this.handleErrors(errors));
     };
+
+
+    search() {
+
+        this.productService.search(this.searchEntity).subscribe(products => this.products = products, errors => this.handleErrors(errors));
+    }
+
+
+    resetSearch() {
+
+        this.searchEntity.categoryId = 0;
+        this.searchEntity.productName = '';
+        this.getProducts();
+
+    }
+
 
 
     private getSearchCategories() {
 
-        this.categoryService.getSearchCategories().subscribe(categories => {
-
-            console.log('20210310-1401');
-            console.log('categories:');
-            console.log(categories);
-
-            this.searchCategories = categories
-        }
-
-            , errors => this.handleErrors(errors));
+        this.categoryService.getSearchCategories().subscribe(categories => this.searchCategories = categories, errors => this.handleErrors(errors));
     }
 
 

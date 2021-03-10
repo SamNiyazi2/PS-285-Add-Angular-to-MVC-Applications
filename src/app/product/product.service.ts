@@ -1,10 +1,11 @@
 ﻿
 
 // 03/09/2021 06:32 pm - SSN - [20210309-1828] - [002] - M04-06 - Creating the product and product service classes
+// 03/10/2021 02:31 pm - SSN - [20210310-1429] - [001] - M05-08 - Modify product service to call search web API
 
 
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
@@ -12,6 +13,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
 import { Product } from './product';
+import { ProductSearch } from './productSearch';
 
 @Injectable()
 export class ProductService {
@@ -29,6 +31,17 @@ export class ProductService {
     }
 
 
+
+    search(searchEntity: ProductSearch): Observable<Product[]> {
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post(this.url + '/search', searchEntity, options).map(this.extractData).catch(this.handleErrors);
+
+    }
+
+
     private extractData(res: Response) {
         let body = res.json();
         return body || {};
@@ -38,7 +51,7 @@ export class ProductService {
     private handleErrors(error: any): Observable<any> {
 
         let errors: string[] = [];
-         
+
 
         switch (error.status) {
 
@@ -71,7 +84,7 @@ export class ProductService {
 
 
         console.error('An error occurred', errors);
- 
+
         return Observable.throw(errors);
 
     }

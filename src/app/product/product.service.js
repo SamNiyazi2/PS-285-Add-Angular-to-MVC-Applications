@@ -1,5 +1,6 @@
 "use strict";
 // 03/09/2021 06:32 pm - SSN - [20210309-1828] - [002] - M04-06 - Creating the product and product service classes
+// 03/10/2021 02:31 pm - SSN - [20210310-1429] - [001] - M05-08 - Modify product service to call search web API
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -23,6 +24,11 @@ var ProductService = /** @class */ (function () {
     }
     ProductService.prototype.getProducts = function () {
         return this.http.get(this.url).map(this.extractData).catch(this.handleErrors);
+    };
+    ProductService.prototype.search = function (searchEntity) {
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post(this.url + '/search', searchEntity, options).map(this.extractData).catch(this.handleErrors);
     };
     ProductService.prototype.extractData = function (res) {
         var body = res.json();

@@ -42,7 +42,7 @@ namespace PTC.Controllers
         }
 
 
-        [Route("Search")]
+        [Route("api/productApi/Search")]
         [HttpPost]
         public IHttpActionResult Search([FromBody] ProductSearch search)
         {
