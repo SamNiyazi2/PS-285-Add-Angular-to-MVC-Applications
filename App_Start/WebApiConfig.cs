@@ -8,7 +8,7 @@ using System.Web.Http;
 // 03/09/2021 06:05 pm - SSN - [20210309-1802] - [001] - M04-03 - Add WebApiConfig class
 
 
-namespace PTC.App_Start
+namespace PTC
 {
     public static class WebApiConfig
     {
