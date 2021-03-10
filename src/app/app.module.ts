@@ -9,6 +9,7 @@ import { ProductService } from './product/product.service';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProductListComponent } from './product/product-list.component';
+import { CategoryService } from './category/category.service';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { ProductListComponent } from './product/product-list.component';
             useClass: LowerCaseUrlSerializer
         }
         , ProductService
+        , CategoryService
     ]
 
 })
