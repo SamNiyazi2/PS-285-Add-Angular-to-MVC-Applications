@@ -3,7 +3,7 @@
 
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Observable'; 
+import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -20,6 +20,12 @@ export class CategoryService {
 
     }
 
+
+    getCategories(): Observable<Category[]> {
+
+        return this.http.get(this.url).map(this.extractData).catch(this.handleErrors);
+
+    }
 
     getSearchCategories(): Observable<Category[]> {
 

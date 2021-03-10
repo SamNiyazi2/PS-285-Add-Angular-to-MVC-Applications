@@ -1,4 +1,4 @@
-﻿<h2>Products List</h2>
+﻿<h2>Product List <span class="small">(Angular)</span></h2>
 
 <div class="row" *ngIf="haveProductRecords">
 
@@ -29,14 +29,28 @@
             </div>
 
             <div class="panel-footer">
-                <button formnovalidate="formnovalidate" class="btn btn-sm btn-primary" (click)="search()">
+
+                <button formnovalidate="formnovalidate"
+                        class="btn btn-sm btn-primary"
+                        (click)="search()">
                     <i class="glyphicon glyphicon-search"></i>
                     &nbsp; Search
                 </button>
-                <button formnovalidate="formnovalidate" class="btn btn-sm btn-primary" (click)="resetSearch()">
+
+                <button formnovalidate="formnovalidate"
+                        class="btn btn-sm btn-primary"
+                        (click)="resetSearch()">
                     <i class="glyphicon glyphicon-share-alt"></i>
                     &nbsp; Reset
                 </button>
+
+                <button formnovalidate="formnovalidate"
+                        class="btn btn-sm btn-primary"
+                        (click)="add()">
+                    <i class="glyphicon  glyphicon-share-alt"></i>
+                    &nbsp; Add new product
+                </button>
+
             </div>
         </div>
     </div>

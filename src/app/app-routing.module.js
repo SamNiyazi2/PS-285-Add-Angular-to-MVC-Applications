@@ -10,6 +10,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var product_list_component_1 = require("./product/product-list.component");
+var product_detail_component_1 = require("./product/product-detail.component");
 var routes = [
     {
         // All routes must be in lowercase
@@ -22,6 +23,10 @@ var routes = [
     {
         path: 'product/product_ang',
         redirectTo: 'productlist'
+    },
+    {
+        path: 'product-detail/:id',
+        component: product_detail_component_1.ProductDetailComponent
     }
 ];
 var AppRoutingModule = /** @class */ (function () {

@@ -10,6 +10,7 @@ import { ProductService } from './product.service';
 import { CategoryService } from '../category/category.service';
 import { Category } from '../category/category';
 import { ProductSearch } from './productSearch';
+import { Router } from '@angular/router';
 
 
 
@@ -20,7 +21,7 @@ import { ProductSearch } from './productSearch';
 })
 export class ProductListComponent implements OnInit {
 
-    constructor(private productService: ProductService, private categoryService: CategoryService) {
+    constructor(private productService: ProductService, private categoryService: CategoryService, private router: Router) {
 
     }
 
@@ -51,11 +52,19 @@ export class ProductListComponent implements OnInit {
     };
 
 
+    add() {
+
+        this.router.navigate(['/product-detail', -1]);
+    }
+
+
     search() {
 
         this.productService.search(this.searchEntity).subscribe(products => this.products = products, errors => this.handleErrors(errors));
     }
 
+ 
+     
 
     resetSearch() {
 

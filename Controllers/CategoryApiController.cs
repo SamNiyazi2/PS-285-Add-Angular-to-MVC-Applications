@@ -14,9 +14,21 @@ namespace PTC.Controllers
     [RoutePrefix("api/CategoryApi")]
     public class CategoryApiController : ApiController
     {
+
+        public IHttpActionResult Get()
+        {
+            return getCategories();
+        }
+
+
         [HttpPost()]
         [Route("SearchCategories")]
         public IHttpActionResult GetSearchCategories()
+        {
+            return getCategories();
+        }
+
+        private IHttpActionResult getCategories()
         {
             IHttpActionResult ret = null;
             PTCViewModel vm = new PTCViewModel();
@@ -38,6 +50,5 @@ namespace PTC.Controllers
 
             return ret;
         }
-
     }
 }

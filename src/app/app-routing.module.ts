@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
 import { ProductListComponent } from './product/product-list.component';
+import { ProductDetailComponent } from './product/product-detail.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
     {
         path: 'product/product_ang',
         redirectTo: 'productlist'
+    },
+    {
+        path: 'product-detail/:id',
+        component: ProductDetailComponent
     }
 
 ];
