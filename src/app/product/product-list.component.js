@@ -28,8 +28,14 @@ var ProductListComponent = /** @class */ (function () {
     ;
     ProductListComponent.prototype.handleErrors = function (errors) {
         this.messages = [];
+        console.log('errors-001');
+        console.log('errors:');
+        console.log(typeof errors);
+        console.log(errors);
         for (var _i = 0, errors_1 = errors; _i < errors_1.length; _i++) {
             var msg = errors_1[_i];
+            console.log('errors-002');
+            console.log(msg);
             this.messages.push(msg);
         }
     };

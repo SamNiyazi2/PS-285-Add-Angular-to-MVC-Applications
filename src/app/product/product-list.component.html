@@ -39,3 +39,15 @@
     </div>
 
 </div>
+
+
+
+<div class="row" *ngIf="messages && messages.length">
+    <div class="col-xs-12">
+        <div class="alert alert-danger">
+            <ul>
+                <li *ngFor="let msg of messages">{{msg}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

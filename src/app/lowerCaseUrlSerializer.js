@@ -22,12 +22,9 @@ var LowerCaseUrlSerializer = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     LowerCaseUrlSerializer.prototype.parse = function (url) {
-        console.log('20210309-1725');
-        console.log(url);
         var path = url.split('?')[0];
         var query = url.split('?')[1] || '';
         var finalUrl = path.toLowerCase() + (query !== '' ? "?" + query : '');
-        console.log('finalurl:', finalUrl);
         return _super.prototype.parse.call(this, finalUrl);
     };
     return LowerCaseUrlSerializer;

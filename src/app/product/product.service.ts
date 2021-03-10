@@ -5,7 +5,7 @@
 
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -38,11 +38,40 @@ export class ProductService {
     private handleErrors(error: any): Observable<any> {
 
         let errors: string[] = [];
+         
 
-        // Todo
+        switch (error.status) {
+
+
+            case 400:
+                let err = error.json();
+
+                if (err.message) {
+                    errors.push('[err-ssn-20210309-1934-A]: ' + err.message);
+                }
+                else {
+                    error.push('[err-ssn-20210309-1934-B]: ' + 'An Unknown error occurred.');
+                }
+                break;
+
+
+            case 404:
+                errors.push('No product data is available');
+                break;
+
+
+            case 500:
+                errors.push('[err-ssn-20210309-1934-C]: ' + error.json().exceptionMessage);
+                break;
+
+
+            default:
+                error.push('[err-ssn-20210309-1934-D]: Status: ' + error.status + ' - Error message: ' + error.statusText);
+        }
+
 
         console.error('An error occurred', errors);
-
+ 
         return Observable.throw(errors);
 
     }

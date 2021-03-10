@@ -8,14 +8,11 @@ import { DefaultUrlSerializer, UrlTree } from '@angular/router';
 
 export class LowerCaseUrlSerializer extends DefaultUrlSerializer {
     parse(url: string): UrlTree {
-
-        console.log('20210309-1725');
-        console.log(url);
-
+ 
         const path = url.split('?')[0];
         const query = url.split('?')[1] || '';
         const finalUrl = path.toLowerCase() + (query !== '' ? `?${query}` : '');
-        console.log('finalurl:', finalUrl)
+ 
         return super.parse(finalUrl);
 
     }

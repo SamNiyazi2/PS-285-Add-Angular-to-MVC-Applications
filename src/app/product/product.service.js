@@ -12,7 +12,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
-var observable_1 = require("rxjs/observable");
+var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 require("rxjs/add/observable/throw");
@@ -30,9 +30,27 @@ var ProductService = /** @class */ (function () {
     };
     ProductService.prototype.handleErrors = function (error) {
         var errors = [];
-        // Todo
+        switch (error.status) {
+            case 400:
+                var err = error.json();
+                if (err.message) {
+                    errors.push('[err-ssn-20210309-1934-A]: ' + err.message);
+                }
+                else {
+                    error.push('[err-ssn-20210309-1934-B]: ' + 'An Unknown error occurred.');
+                }
+                break;
+            case 404:
+                errors.push('No product data is available');
+                break;
+            case 500:
+                errors.push('[err-ssn-20210309-1934-C]: ' + error.json().exceptionMessage);
+                break;
+            default:
+                error.push('[err-ssn-20210309-1934-D]: Status: ' + error.status + ' - Error message: ' + error.statusText);
+        }
         console.error('An error occurred', errors);
-        return observable_1.Observable.throw(errors);
+        return Observable_1.Observable.throw(errors);
     };
     ProductService = __decorate([
         core_1.Injectable(),
