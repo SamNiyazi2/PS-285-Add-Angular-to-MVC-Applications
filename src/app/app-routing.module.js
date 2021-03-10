@@ -14,6 +14,9 @@ var product_list_component_1 = require("./product/product-list.component");
 var routes = [
     {
         // All routes must be in lowercase
+        // All routes must be in lowercase
+        // All routes must be in lowercase
+        // All routes must be in lowercase
         path: 'productlist',
         component: product_list_component_1.ProductListComponent
     },
