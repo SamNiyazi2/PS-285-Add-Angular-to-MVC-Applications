@@ -242,6 +242,7 @@
     <TypeScriptCompile Include="src\app\product\product-list.component.ts" />
     <TypeScriptCompile Include="src\app\product\product.service.ts" />
     <TypeScriptCompile Include="src\app\product\product.ts" />
+    <TypeScriptCompile Include="src\app\product\productSearch.ts" />
     <TypeScriptCompile Include="src\main.ts" />
   </ItemGroup>
   <ItemGroup>
