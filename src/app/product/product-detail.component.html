@@ -1,0 +1,90 @@
+﻿
+<div class="row" *ngIf="!product">
+    <p class="alert alert-danger">No product was selected.</p>
+</div>
+
+<div class="row" *ngIf="product">
+
+    <div class="col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title">Product Information</h1>
+            </div>
+            <div class="panel-body">
+
+
+                <div class="row" *ngIf="messages && messages.length">
+                    <div class="col-xs-12">
+                        <div class="alert alert-warning">
+                            <ul>
+                                <li *ngFor="let msg of messages">{{msg}}</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Begin detail area -->
+                <div class="form-group">
+                    <label for="categoryId">Category ID</label>
+                    <select id="categoryId" name="categoryId" [(ngModel)]="product.categoryId">
+                        <option *ngFor="let cat of categories" value="{{cat.categoryId}}">{{cat.categoryName}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="productName">Product name</label>
+                    <input id="productName"
+                           name="productName"
+                           type="text" 
+                           class="form-control" 
+                           autofocus="autofocus" 
+                           placeholder="Enter product name" 
+                           title="Enter product naem" 
+                           [(ngModel)]="product.productName" />
+                </div>
+
+                <div class="form-group">
+                    <label for="introductionDate">Introduction Date</label>
+                    <input id="introductionDate"
+                           type="date"
+                           class="form-control"
+                           placeholder="Enter introduction date"
+                           title="Enter introduction date"
+                           [(ngModel)]="product.introductionDate" />
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input id="price"
+                           type="number"
+                           class="form-control"
+                           placeholder="Enter price"
+                           title="Enter price"
+                           [(ngModel)]="product.price"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="url">URL</label>
+                    <input id="url"
+                           type="url"
+                           class="form-control"
+                           placeholder="Enter the URL"
+                           title="Enter the URL"
+                           [(ngModel)]="product.url"/>
+                </div>
+
+                <!-- End detail area -->
+
+
+            </div>
+
+
+            <div class="panel-footer">
+                <button class="btn btn-success" (click)="saveProduct()">Save</button>
+                <button class="btn btn-primary" (click)="goBack()">Cancel</button>
+            </div>
+
+        </div>
+    </div>
+</div>
