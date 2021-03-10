@@ -17,7 +17,7 @@ namespace PTC.Controllers
         public IHttpActionResult Get()
         {
 
-            throw new ApplicationException("mvc-err-ssn-20210308-1936: Test exception.");
+          //  throw new ApplicationException("mvc-err-ssn-20210308-1936: Test exception.");
 
             IHttpActionResult ret = null;
 

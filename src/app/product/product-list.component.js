@@ -1,5 +1,7 @@
 "use strict";
 // 03/09/2021 04:10 pm - SSN - [20210309-1551] - [001] - M03-06 - Add product list component and HTML
+// 03/10/2021 01:29 pm - SSN - [20210310-1324] - [001] - M05-05 - Build product search class. Update product list component
+// 03/10/2021 01:40 pm - SSN - [20210310-1335] - [001] - M05-06 - Calling the category Web API
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -12,20 +14,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var product_service_1 = require("./product.service");
+var category_service_1 = require("../category/category.service");
+var productSearch_1 = require("./productSearch");
 var ProductListComponent = /** @class */ (function () {
-    function ProductListComponent(productService) {
+    function ProductListComponent(productService, categoryService) {
         this.productService = productService;
+        this.categoryService = categoryService;
         this.products = [];
         this.messages = [];
+        this.searchCategories = [];
+        this.searchEntity = new productSearch_1.ProductSearch();
     }
     ProductListComponent.prototype.ngOnInit = function () {
         this.getProducts();
+        this.searchEntity.categoryId = 0;
+        this.getSearchCategories();
     };
     ProductListComponent.prototype.getProducts = function () {
         var _this = this;
         this.productService.getProducts().subscribe(function (products) { return _this.products = products; }, function (errors) { return _this.handleErrors(errors); });
     };
     ;
+    ProductListComponent.prototype.getSearchCategories = function () {
+        var _this = this;
+        this.categoryService.getSearchCategories().subscribe(function (categories) {
+            console.log('20210310-1401');
+            console.log('categories:');
+            console.log(categories);
+            _this.searchCategories = categories;
+        }, function (errors) { return _this.handleErrors(errors); });
+    };
     ProductListComponent.prototype.handleErrors = function (errors) {
         this.messages = [];
         for (var _i = 0, errors_1 = errors; _i < errors_1.length; _i++) {
@@ -37,7 +55,7 @@ var ProductListComponent = /** @class */ (function () {
         core_1.Component({
             templateUrl: './product-list.component.html',
         }),
-        __metadata("design:paramtypes", [product_service_1.ProductService])
+        __metadata("design:paramtypes", [product_service_1.ProductService, category_service_1.CategoryService])
     ], ProductListComponent);
     return ProductListComponent;
 }());

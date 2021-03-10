@@ -1,6 +1,6 @@
 ﻿<h2>Products List</h2>
 
-<div class="row" $ngIf="products && products.length">
+<div class="row" *ngIf="products && products.length">
 
     <div class="col-xs-12">
         <div class="panel panel-primary">
@@ -13,7 +13,7 @@
 
                 <div class="form-group">
                     <label for="searchCategoryId">Category ID</label>
-                    <select id="searchCategoryId" name="searchCategoryId" class="form-control" [(ngModel)]="searchEntity.CategoryId">
+                    <select id="searchCategoryId" name="searchCategoryId" class="form-control" [(ngModel)]="searchEntity.categoryId">
                         <option *ngFor="let cat of searchCategories" value="{{cat.categoryId}}">
                             {{cat.categoryName}}
                         </option>
@@ -27,12 +27,13 @@
                 </div>
 
             </div>
+
             <div class="panel-footer">
                 <button formnovalidate="formnovalidate" class="btn btn-sm btn-primary" (click)="serach()">
                     <i class="glyphicon glyphicon-search"></i>
                     &nbsp; Search
                 </button>
-                <button formnovalidate="formnovalidate" class="btn btn-sm- btn-primary" (click)="resetSearch()">
+                <button formnovalidate="formnovalidate" class="btn btn-sm btn-primary" (click)="resetSearch()">
                     <i class="glyphicon glyphicon-share-alt"></i>
                     &nbsp; Reset
                 </button>

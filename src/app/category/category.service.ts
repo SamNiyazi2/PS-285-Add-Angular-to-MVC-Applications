@@ -3,18 +3,18 @@
 
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable'; 
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/throw';
+import 'rxjs/add/observable/throw';
 
 import { Category } from './category';
 
 @Injectable()
 export class CategoryService {
 
-    private url = '/api/categoryApi';
+    private url = '/api/CategoryApi';
 
     constructor(private http: Http) {
 
@@ -26,7 +26,7 @@ export class CategoryService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(this.url + '/searchCategories', null, options).map(this.extractData).catch(this.handleErrors);
+        return this.http.post(this.url + '/SearchCategories', null, options).map(this.extractData).catch(this.handleErrors);
 
     }
 
