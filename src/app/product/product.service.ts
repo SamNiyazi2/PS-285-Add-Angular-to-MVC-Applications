@@ -42,6 +42,16 @@ export class ProductService {
     }
 
 
+    addProduct(product: Product): Observable<Product> {
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post(this.url, product, options).map(this.extractData).catch(this.handleErrors);
+
+    }
+
+
     private extractData(res: Response) {
         let body = res.json();
         return body || {};
@@ -59,12 +69,31 @@ export class ProductService {
             case 400:
                 let err = error.json();
 
-                if (err.message) {
-                    errors.push('[err-ssn-20210309-1934-A]: ' + err.message);
-                }
-                else {
-                    error.push('[err-ssn-20210309-1934-B]: ' + 'An Unknown error occurred.');
-                }
+                if (err.modelState) {
+
+                    let valErrors1 = error.json().modelState;
+                    let valErrors2 = err.modelState;
+
+                    for (var key in valErrors1) {
+                        for (var i = 0; i < valErrors1[key].length; i++) {
+                            errors.push(valErrors1[key][i]);
+                        }
+                    }
+
+                    for (var key in valErrors2) {
+                        for (var i = 0; i < valErrors2[key].length; i++) {
+                            errors.push(valErrors2[key][i]);
+                        }
+                    }
+
+
+                } else
+                    if (err.message) {
+                        errors.push('[err-ssn-20210309-1934-A]: ' + err.message);
+                    }
+                    else {
+                        error.push('[err-ssn-20210309-1934-B]: ' + 'An Unknown error occurred.');
+                    }
                 break;
 
 
