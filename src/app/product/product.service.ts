@@ -31,6 +31,11 @@ export class ProductService {
     }
 
 
+    getProduct(id: number): Observable<Product> {
+
+        return this.http.get(this.url + '/' + id).map(this.extractData).catch(this.handleErrors);
+    }
+
 
     search(searchEntity: ProductSearch): Observable<Product[]> {
 
@@ -54,6 +59,9 @@ export class ProductService {
 
     private extractData(res: Response) {
         let body = res.json();
+        console.log('20210310-2052 - extractData');
+        console.log(body);
+
         return body || {};
     }
 

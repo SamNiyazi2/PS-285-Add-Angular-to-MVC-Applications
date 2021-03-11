@@ -22,10 +22,10 @@ var routes = [
     },
     {
         path: 'product/product_ang',
-        redirectTo: '/productlist'
+        redirectTo: 'productlist'
     },
     {
-        path: 'product-detail/:id',
+        path: 'productdetail/:id',
         component: product_detail_component_1.ProductDetailComponent
     }
 ];

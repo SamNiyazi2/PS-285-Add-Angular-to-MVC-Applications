@@ -25,6 +25,9 @@ var ProductService = /** @class */ (function () {
     ProductService.prototype.getProducts = function () {
         return this.http.get(this.url).map(this.extractData).catch(this.handleErrors);
     };
+    ProductService.prototype.getProduct = function (id) {
+        return this.http.get(this.url + '/' + id).map(this.extractData).catch(this.handleErrors);
+    };
     ProductService.prototype.search = function (searchEntity) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
@@ -37,6 +40,8 @@ var ProductService = /** @class */ (function () {
     };
     ProductService.prototype.extractData = function (res) {
         var body = res.json();
+        console.log('20210310-2052 - extractData');
+        console.log(body);
         return body || {};
     };
     ProductService.prototype.handleErrors = function (error) {

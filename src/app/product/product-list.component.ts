@@ -54,7 +54,13 @@ export class ProductListComponent implements OnInit {
 
     add() {
 
-        this.router.navigate(['/product-detail', -1]);
+        this.router.navigate(['/productdetail', -1]);
+    }
+
+
+    selectProduct(id: number) {
+
+        this.router.navigate(['/productdetail', id]);
     }
 
 
@@ -63,8 +69,8 @@ export class ProductListComponent implements OnInit {
         this.productService.search(this.searchEntity).subscribe(products => this.products = products, errors => this.handleErrors(errors));
     }
 
- 
-     
+
+
 
     resetSearch() {
 

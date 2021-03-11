@@ -22,10 +22,10 @@ const routes: Routes = [
     },
     {
         path: 'product/product_ang',
-        redirectTo: '/productlist'
+        redirectTo: 'productlist'
     },
     {
-        path: 'product-detail/:id',
+        path: 'productdetail/:id',
         component: ProductDetailComponent
     }
 

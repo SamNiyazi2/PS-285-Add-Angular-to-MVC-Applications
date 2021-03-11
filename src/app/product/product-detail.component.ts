@@ -4,10 +4,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
-import { Product } from './product'; 
+import { Product } from './product';
 import { Category } from '../category/category';
 import { ProductService } from './product.service';
 import { CategoryService } from '../category/category.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
 
@@ -21,17 +22,30 @@ export class ProductDetailComponent implements OnInit {
     categories: Category[] = [];
 
 
-    constructor(private categoryService: CategoryService, private location: Location, private productService: ProductService) {
+    constructor(private categoryService: CategoryService, private location: Location, private productService: ProductService, private activatedRoute: ActivatedRoute) {
 
     }
 
 
     ngOnInit(): void {
 
-        this.product = new Product();
-        this.product.price = 0;
-        this.product.categoryId = 0;
-        this.product.url = "http://www.fairwaytech.com";
+        this.activatedRoute.params.forEach((params: Params) => {
+
+            const id = parseInt(params['id']);
+
+            if (id != -1) {
+                this.productService.getProduct(id).subscribe(product => this.product = product, errors => this.handleErrors);
+            }
+            else {
+                this.product = new Product();
+                this.product.price = 0;
+                this.product.categoryId = 0;
+                this.product.url = "http://www.fairwaytech.com";
+
+            }
+        });
+
+
 
         this.getCategories();
 
@@ -51,13 +65,13 @@ export class ProductDetailComponent implements OnInit {
 
 
     private updateProduct(product: Product) {
-         
+
     }
 
 
     private addProduct(product: Product) {
 
-       this.productService.addProduct(product).subscribe(() => this.goBack(), errors => this.handleErrors(errors));
+        this.productService.addProduct(product).subscribe(() => this.goBack(), errors => this.handleErrors(errors));
     }
 
 

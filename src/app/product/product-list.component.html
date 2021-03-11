@@ -12,7 +12,7 @@
             <div class="panel-body">
 
                 <div class="form-group">
-                    <label for="searchCategoryId">Category ID</label>
+                    <label for="searchCategoryId">Product Category</label>
                     <select id="searchCategoryId" name="searchCategoryId" class="form-control" [(ngModel)]="searchEntity.categoryId">
                         <option *ngFor="let cat of searchCategories" value="{{cat.categoryId}}">
                             {{cat.categoryName}}
@@ -69,6 +69,7 @@
                 <thead>
 
                     <tr>
+                        <td>Edit</td>
                         <td>Product Name</td>
                         <td>Introduction Date</td>
                         <td>URL</td>
@@ -80,6 +81,13 @@
                 <tbody>
 
                     <tr *ngFor="let product of products">
+
+                        <td>
+                            <button class="btn btn-default btn-sm"
+                                    (click)="selectProduct(product.productId)">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </button>
+                        </td>
 
                         <td>{{product.productName}}</td>
                         <td>{{product.introductionDate|date}}</td>

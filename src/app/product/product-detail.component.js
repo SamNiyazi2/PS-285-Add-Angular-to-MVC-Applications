@@ -15,19 +15,30 @@ var common_1 = require("@angular/common");
 var product_1 = require("./product");
 var product_service_1 = require("./product.service");
 var category_service_1 = require("../category/category.service");
+var router_1 = require("@angular/router");
 var ProductDetailComponent = /** @class */ (function () {
-    function ProductDetailComponent(categoryService, location, productService) {
+    function ProductDetailComponent(categoryService, location, productService, activatedRoute) {
         this.categoryService = categoryService;
         this.location = location;
         this.productService = productService;
+        this.activatedRoute = activatedRoute;
         this.messages = [];
         this.categories = [];
     }
     ProductDetailComponent.prototype.ngOnInit = function () {
-        this.product = new product_1.Product();
-        this.product.price = 0;
-        this.product.categoryId = 0;
-        this.product.url = "http://www.fairwaytech.com";
+        var _this = this;
+        this.activatedRoute.params.forEach(function (params) {
+            var id = parseInt(params['id']);
+            if (id != -1) {
+                _this.productService.getProduct(id).subscribe(function (product) { return _this.product = product; }, function (errors) { return _this.handleErrors; });
+            }
+            else {
+                _this.product = new product_1.Product();
+                _this.product.price = 0;
+                _this.product.categoryId = 0;
+                _this.product.url = "http://www.fairwaytech.com";
+            }
+        });
         this.getCategories();
     };
     ProductDetailComponent.prototype.getCategories = function () {
@@ -68,7 +79,7 @@ var ProductDetailComponent = /** @class */ (function () {
         core_1.Component({
             templateUrl: './product-detail.component.html'
         }),
-        __metadata("design:paramtypes", [category_service_1.CategoryService, common_1.Location, product_service_1.ProductService])
+        __metadata("design:paramtypes", [category_service_1.CategoryService, common_1.Location, product_service_1.ProductService, router_1.ActivatedRoute])
     ], ProductDetailComponent);
     return ProductDetailComponent;
 }());

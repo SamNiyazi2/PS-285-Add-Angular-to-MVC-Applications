@@ -42,7 +42,10 @@ var ProductListComponent = /** @class */ (function () {
     };
     ;
     ProductListComponent.prototype.add = function () {
-        this.router.navigate(['/product-detail', -1]);
+        this.router.navigate(['/productdetail', -1]);
+    };
+    ProductListComponent.prototype.selectProduct = function (id) {
+        this.router.navigate(['/productdetail', id]);
     };
     ProductListComponent.prototype.search = function () {
         var _this = this;
