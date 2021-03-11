@@ -18,13 +18,16 @@ var app_routing_module_1 = require("./app-routing.module");
 var product_list_component_1 = require("./product/product-list.component");
 var category_service_1 = require("./category/category.service");
 var product_detail_component_1 = require("./product/product-detail.component");
+var AutoFocusDirective_1 = require("./AutoFocusDirective");
+var index_1 = require("./errorMessages/index");
+var index_2 = require("./errorMessages/index");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, app_routing_module_1.AppRoutingModule, http_1.HttpModule, forms_1.FormsModule],
-            declarations: [app_component_1.AppComponent, product_list_component_1.ProductListComponent, product_detail_component_1.ProductDetailComponent],
+            declarations: [app_component_1.AppComponent, product_list_component_1.ProductListComponent, product_detail_component_1.ProductDetailComponent, AutoFocusDirective_1.AutoFocusDirective, index_1.ErrorMessageFilterPipe, index_2.ErrorMessagesDisplayComponent],
             bootstrap: [app_component_1.AppComponent],
             providers: [
                 {

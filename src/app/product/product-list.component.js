@@ -50,8 +50,19 @@ var ProductListComponent = /** @class */ (function () {
     ProductListComponent.prototype.deleteProduct = function (product) {
         var _this = this;
         if (confirm('Delete this product? \n\nName: ' + product.productName)) {
-            this.productService.deleteProduct(product.productId).subscribe(function () { return _this.getProducts(); }, function (errors) { return _this.handleErrors(errors); });
+            // this.productService.deleteProduct(product.productId).subscribe(() => this.getProducts(), errors => this.handleErrors(errors));
+            this.productService.deleteProduct(product.productId).subscribe(function () {
+                _this.removeProductFromList(product);
+                toastr.success('Record was deleted');
+            }, function (errors) {
+                _this.handleErrors(errors);
+                toastr.success('Failed to delete record');
+            });
         }
+    };
+    ProductListComponent.prototype.removeProductFromList = function (product) {
+        var indexDeleted = this.products.findIndex(function (r) { return r.productId === product.productId; });
+        this.products.splice(indexDeleted, 1);
     };
     ProductListComponent.prototype.search = function () {
         var _this = this;

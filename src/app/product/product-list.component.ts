@@ -11,7 +11,10 @@ import { CategoryService } from '../category/category.service';
 import { Category } from '../category/category';
 import { ProductSearch } from './productSearch';
 import { Router } from '@angular/router';
+import { indexDebugNode } from '@angular/core/src/debug/debug_node';
 
+
+declare let toastr: any;
 
 
 @Component({
@@ -67,10 +70,27 @@ export class ProductListComponent implements OnInit {
     deleteProduct(product: Product) {
 
         if (confirm('Delete this product? \n\nName: ' + product.productName)) {
-            this.productService.deleteProduct(product.productId).subscribe(() => this.getProducts(), errors => this.handleErrors(errors));
+            // this.productService.deleteProduct(product.productId).subscribe(() => this.getProducts(), errors => this.handleErrors(errors));
+            this.productService.deleteProduct(product.productId).subscribe(() => {
+
+                this.removeProductFromList(product);
+                toastr.success('Record was deleted');
+            }
+                , errors => {
+                    this.handleErrors(errors);
+                    toastr.success('Failed to delete record');
+                });
         }
 
     }
+
+
+    removeProductFromList(product: Product) {
+
+        const indexDeleted = this.products.findIndex(r => r.productId === product.productId);
+        this.products.splice(indexDeleted, 1);
+    }
+
 
 
     search() {

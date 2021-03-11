@@ -12,10 +12,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
+var router_1 = require("@angular/router");
 var product_1 = require("./product");
 var product_service_1 = require("./product.service");
 var category_service_1 = require("../category/category.service");
-var router_1 = require("@angular/router");
 var ProductDetailComponent = /** @class */ (function () {
     function ProductDetailComponent(categoryService, location, productService, activatedRoute) {
         this.categoryService = categoryService;
@@ -50,11 +50,23 @@ var ProductDetailComponent = /** @class */ (function () {
     };
     ProductDetailComponent.prototype.updateProduct = function (product) {
         var _this = this;
-        this.productService.updateProduct(product).subscribe(function () { return _this.goBack(); }, function (errors) { return _this.handleErrors(errors); });
+        this.productService.updateProduct(product).subscribe(function () {
+            _this.goBack();
+            toastr.success('Record was updated');
+        }, function (errors) {
+            _this.handleErrors(errors);
+            toastr.error('Failed to update record');
+        });
     };
     ProductDetailComponent.prototype.addProduct = function (product) {
         var _this = this;
-        this.productService.addProduct(product).subscribe(function () { return _this.goBack(); }, function (errors) { return _this.handleErrors(errors); });
+        this.productService.addProduct(product).subscribe(function () {
+            _this.goBack();
+            toastr.success('Record was added');
+        }, function (errors) {
+            _this.handleErrors(errors);
+            toastr.error('Failed to update record');
+        });
     };
     ProductDetailComponent.prototype.saveProduct = function () {
         if (this.product) {

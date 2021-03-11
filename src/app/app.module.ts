@@ -13,11 +13,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { ProductListComponent } from './product/product-list.component';
 import { CategoryService } from './category/category.service';
 import { ProductDetailComponent } from './product/product-detail.component';
+import { AutoFocusDirective } from './AutoFocusDirective';
+import { ErrorMessageFilterPipe } from './errorMessages/index';
+import { ErrorMessagesDisplayComponent } from './errorMessages/index';
 
 
 @NgModule({
     imports: [BrowserModule, AppRoutingModule, HttpModule, FormsModule],
-    declarations: [AppComponent, ProductListComponent, ProductDetailComponent],
+    declarations: [AppComponent, ProductListComponent, ProductDetailComponent, AutoFocusDirective, ErrorMessageFilterPipe, ErrorMessagesDisplayComponent ],
     bootstrap: [AppComponent],
     providers: [
         {

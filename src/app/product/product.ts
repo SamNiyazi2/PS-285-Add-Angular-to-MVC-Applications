@@ -11,5 +11,6 @@ export class Product {
     price: number;
     url: string;
     categoryId: number;
+    timestamp:string
 
 }

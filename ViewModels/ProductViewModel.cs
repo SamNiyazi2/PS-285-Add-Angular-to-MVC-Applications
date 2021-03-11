@@ -2,8 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
 
 namespace PTC
@@ -327,7 +330,7 @@ namespace PTC
                 ////////////}
                 ////////////else
                 ////////////{
-             //   Entity.Category = db.Categories.Find(Entity.CategoryId);
+                Entity.Category = db.Categories.Find(Entity.CategoryId);
                 ////////////}
 
 
@@ -361,6 +364,59 @@ namespace PTC
                 // Set page state
                 SetUIState(PageMode);
             }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                IsValid = false;
+
+                var databaseEntry = db.Entry(Entity).GetDatabaseValues();
+
+
+//                var entry1 = ex.Entries.Single();
+
+//                var clientValues1 = (Product)entry.Entity;
+
+                if (databaseEntry == null)
+                {
+                    Messages.AddModelError(string.Empty,
+                        "Unable to save changes. The department was deleted by another user.");
+                }
+                else
+                {
+                    //                  var databaseValues = (Product)databaseEntry.ToObject();
+                    IEnumerable<String> fieldsList = databaseEntry.PropertyNames;
+                    
+
+                    DbEntityEntry entry111 = ex.Entries.FirstOrDefault();
+
+                    Regex regex = new Regex("byte");
+
+                    foreach (string fieldName in fieldsList)
+                    {
+                        string typeName = entry111.CurrentValues[fieldName].GetType().Name.ToLower();
+
+                        if (regex.Match(typeName).Length>0) continue;
+
+                        var temp1 = databaseEntry[fieldName];
+                        var temp2 = entry111.CurrentValues[fieldName];
+
+
+                        if (!temp1.Equals(temp2) )
+                        {
+                            Messages.AddModelError(fieldName, "Current value: " + $"<br/>[{temp1}<br/>{temp2}");
+
+                        }
+
+                        Messages.AddModelError("", "Record was changed by someone else.  Please pick the values you choose to override.");
+
+                    }
+
+
+                    SetUIState(PageMode);
+
+                }
+
+            }
+
             catch (Exception ex)
             {
                 LastException = ex;

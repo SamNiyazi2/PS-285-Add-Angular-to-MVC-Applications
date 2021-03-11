@@ -3,13 +3,15 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { ActivatedRoute, Params } from '@angular/router';
 
 import { Product } from './product';
 import { Category } from '../category/category';
 import { ProductService } from './product.service';
 import { CategoryService } from '../category/category.service';
-import { ActivatedRoute, Params } from '@angular/router';
 
+declare let toastr:any;
+ 
 @Component({
 
     templateUrl: './product-detail.component.html'
@@ -66,13 +68,32 @@ export class ProductDetailComponent implements OnInit {
 
     private updateProduct(product: Product) {
 
-        this.productService.updateProduct(product).subscribe(() => this.goBack(), errors => this.handleErrors(errors));
+        this.productService.updateProduct(product).subscribe(() => {
+
+            this.goBack();
+            toastr.success('Record was updated');
+        }
+            , errors => {
+                this.handleErrors(errors);
+                toastr.error('Failed to update record');
+            }
+        );
+
+
     }
 
 
     private addProduct(product: Product) {
 
-        this.productService.addProduct(product).subscribe(() => this.goBack(), errors => this.handleErrors(errors));
+        this.productService.addProduct(product).subscribe(() => {
+
+            this.goBack();
+            toastr.success('Record was added');
+        }
+            , errors => {
+                this.handleErrors(errors);
+                toastr.error('Failed to update record');
+            });
     }
 
 
@@ -93,7 +114,7 @@ export class ProductDetailComponent implements OnInit {
 
 
     private handleErrors(errors: any) {
- 
+
         this.messages = [];
 
         for (let msg of errors) {

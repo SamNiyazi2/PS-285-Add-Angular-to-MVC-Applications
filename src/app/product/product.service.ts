@@ -14,6 +14,7 @@ import 'rxjs/add/observable/throw';
 
 import { Product } from './product';
 import { ProductSearch } from './productSearch';
+import { IErrorMessage, createErrorMessage } from '../errorMessages/index';
 
 @Injectable()
 export class ProductService {
@@ -83,7 +84,7 @@ export class ProductService {
 
     private handleErrors(error: any): Observable<any> {
 
-        let errors: string[] = [];
+        let errors: IErrorMessage[] = [];
 
 
         switch (error.status) {
@@ -98,33 +99,33 @@ export class ProductService {
 
                     for (var key in valErrors1) {
                         for (var i = 0; i < valErrors1[key].length; i++) {
-                            errors.push(valErrors1[key][i]);
+                            errors.push(createErrorMessage(  key,  valErrors1[key][i] ) );
                         }
                     }
 
 
                 } else
                     if (err.message) {
-                        errors.push('[err-ssn-20210309-1934-A]: ' + err.message);
+                        errors.push(createErrorMessage( '',  '[err-ssn-20210309-1934-A]: ' + err.message ));
                     }
                     else {
-                        error.push('[err-ssn-20210309-1934-B]: ' + 'An Unknown error occurred.');
+                        error.push(createErrorMessage('', '[err-ssn-20210309-1934-B]: ' + 'An Unknown error occurred.'));
                     }
                 break;
 
 
             case 404:
-                errors.push('No product data is available');
+                errors.push( createErrorMessage('','No product data is available'));
                 break;
 
 
             case 500:
-                errors.push('[err-ssn-20210309-1934-C]: ' + error.json().exceptionMessage);
+                errors.push(createErrorMessage('','[err-ssn-20210309-1934-C]: ' + error.json().exceptionMessage));
                 break;
 
 
             default:
-                error.push('[err-ssn-20210309-1934-D]: Status: ' + error.status + ' - Error message: ' + error.statusText);
+                error.push(createErrorMessage('','[err-ssn-20210309-1934-D]: Status: ' + error.status + ' - Error message: ' + error.statusText));
         }
 
 

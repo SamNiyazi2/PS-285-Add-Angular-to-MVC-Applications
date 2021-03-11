@@ -4,3 +4,11 @@ body {
 span.small {
     font-size:12px;
 }
+
+.testClass{ 
+}
+
+.alert-short{
+    padding:3px 0px 3px 0px;
+    margin:0px;
+}

@@ -11,6 +11,9 @@ namespace PTC.Models
     [Table("Product")]
     public partial class Product
     {
+        [Timestamp]
+        public byte[] Timestamp { get; set; }
+
         public int ProductId { get; set; }
 
         [StringLength(80)]
