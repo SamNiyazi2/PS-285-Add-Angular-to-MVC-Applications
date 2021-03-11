@@ -38,10 +38,13 @@ var ProductService = /** @class */ (function () {
         var options = new http_1.RequestOptions({ headers: headers });
         return this.http.post(this.url, product, options).map(this.extractData).catch(this.handleErrors);
     };
+    ProductService.prototype.updateProduct = function (product) {
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.put(this.url + '/' + product.productId, product, options).map(this.extractData).catch(this.handleErrors);
+    };
     ProductService.prototype.extractData = function (res) {
         var body = res.json();
-        console.log('20210310-2052 - extractData');
-        console.log(body);
         return body || {};
     };
     ProductService.prototype.handleErrors = function (error) {

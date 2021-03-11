@@ -49,15 +49,14 @@ var ProductDetailComponent = /** @class */ (function () {
         this.location.back();
     };
     ProductDetailComponent.prototype.updateProduct = function (product) {
+        var _this = this;
+        this.productService.updateProduct(product).subscribe(function () { return _this.goBack(); }, function (errors) { return _this.handleErrors(errors); });
     };
     ProductDetailComponent.prototype.addProduct = function (product) {
         var _this = this;
         this.productService.addProduct(product).subscribe(function () { return _this.goBack(); }, function (errors) { return _this.handleErrors(errors); });
     };
     ProductDetailComponent.prototype.saveProduct = function () {
-        console.log('saveProduct - 20210310-1843');
-        console.log('this.product:');
-        console.log(this.product);
         if (this.product) {
             if (this.product.productId) {
                 this.updateProduct(this.product);
@@ -66,7 +65,6 @@ var ProductDetailComponent = /** @class */ (function () {
                 this.addProduct(this.product);
             }
         }
-        console.log('saveProduct - 20210310-1843-End');
     };
     ProductDetailComponent.prototype.handleErrors = function (errors) {
         this.messages = [];

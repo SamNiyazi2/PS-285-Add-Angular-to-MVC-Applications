@@ -111,9 +111,7 @@ namespace PTC.Controllers
 
 
         public IHttpActionResult Put(int id, Product product)
-        {
-            return BadRequest("Passing an invalid object - 2021010-2150");
-
+        { 
             IHttpActionResult result = null;
             PTCViewModel vm = new PTCViewModel();
 

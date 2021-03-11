@@ -57,11 +57,19 @@ export class ProductService {
     }
 
 
+    updateProduct(product: Product): Observable<Product> {
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.put(this.url + '/' + product.productId, product, options).map(this.extractData).catch(this.handleErrors);
+
+    }
+
+
     private extractData(res: Response) {
         let body = res.json();
-        console.log('20210310-2052 - extractData');
-        console.log(body);
-
+        
         return body || {};
     }
 

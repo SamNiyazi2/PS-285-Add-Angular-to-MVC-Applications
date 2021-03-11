@@ -66,6 +66,7 @@ export class ProductDetailComponent implements OnInit {
 
     private updateProduct(product: Product) {
 
+        this.productService.updateProduct(product).subscribe(() => this.goBack(), errors => this.handleErrors(errors));
     }
 
 
@@ -77,13 +78,8 @@ export class ProductDetailComponent implements OnInit {
 
     saveProduct() {
 
-        console.log('saveProduct - 20210310-1843');
-
-        console.log('this.product:');
-        console.log(this.product)
-
-
         if (this.product) {
+
             if (this.product.productId) {
                 this.updateProduct(this.product);
 
@@ -93,14 +89,11 @@ export class ProductDetailComponent implements OnInit {
             }
         }
 
-        console.log('saveProduct - 20210310-1843-End');
-
-
     }
 
 
     private handleErrors(errors: any) {
-
+ 
         this.messages = [];
 
         for (let msg of errors) {
