@@ -10,6 +10,7 @@ using System.Web.Http.ModelBinding;
 
 // 03/09/2021 05:54 pm - SSN - [20210309-1750] - [001] - M04-02 - Add a Web API class
 // 03/10/2021 02:24 pm - SSN - [20210310-1420] - [001] - M05-07 - Create search Web AP
+// 03/10/2021 07:52 pm - SSN - [20210310-1951] - [001] - M07-03 - Build a Get(id) controller method
 
 namespace PTC.Controllers
 {
@@ -44,6 +45,35 @@ namespace PTC.Controllers
         }
 
 
+
+        [HttpGet]
+        public IHttpActionResult Get(int id)
+        {
+            IHttpActionResult result = null;
+            PTCViewModel vm = new PTCViewModel();
+
+            vm.Get(id);
+
+            if (vm.Entity != null)
+            {
+                result = Ok(vm.Entity);
+            }
+            else
+            {
+                if (vm.LastException != null)
+                {
+                    result = BadRequest(vm.Message);
+                }
+                else
+                {
+                    result = NotFound();
+                }
+            }
+
+            return result;
+        }
+
+
         [HttpPost]
         public IHttpActionResult Post(Product product)
         {
@@ -75,7 +105,7 @@ namespace PTC.Controllers
                     }
                 }
             }
-            
+
             return ret;
         }
 
