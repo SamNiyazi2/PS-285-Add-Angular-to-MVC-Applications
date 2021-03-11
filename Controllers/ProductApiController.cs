@@ -145,6 +145,26 @@ namespace PTC.Controllers
         }
 
 
+        public IHttpActionResult Delete(int id )
+        {
+
+            IHttpActionResult result = null;
+            PTCViewModel vm = new PTCViewModel();
+            vm.Delete(id);
+            if ( vm.LastException != null )
+            {
+                result = BadRequest(vm.Message);
+            }else
+            {
+                result = Ok(vm.Entity);
+            }
+
+            return result;
+
+        }
+
+
+
         private ModelStateDictionary ConvertToModelState(System.Web.Mvc.ModelStateDictionary state)
         {
 
