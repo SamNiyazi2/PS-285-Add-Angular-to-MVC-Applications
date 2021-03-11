@@ -110,6 +110,43 @@ namespace PTC.Controllers
         }
 
 
+        public IHttpActionResult Put(int id, Product product)
+        {
+            return BadRequest("Passing an invalid object - 2021010-2150");
+
+            IHttpActionResult result = null;
+            PTCViewModel vm = new PTCViewModel();
+
+            if (product != null)
+            {
+                vm.Entity = product;
+                vm.PageMode = PDSAPageModeEnum.Edit;
+                vm.Save();
+                if (vm.IsValid)
+                {
+                    result = Ok(vm.Entity);
+                }
+                else
+                {
+                    if (vm.Messages.Count > 0)
+                    {
+                        result = BadRequest(ConvertToModelState(vm.Messages));
+                    }
+                    else if (vm.LastException != null)
+                    {
+                        result = BadRequest(vm.Message);
+                    }
+                    else
+                    {
+                        result = NotFound();
+                    }
+                }
+            }
+
+            return result;
+        }
+
+
         private ModelStateDictionary ConvertToModelState(System.Web.Mvc.ModelStateDictionary state)
         {
 
