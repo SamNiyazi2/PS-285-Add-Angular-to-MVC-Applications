@@ -71,18 +71,11 @@ export class ProductService {
 
                 if (err.modelState) {
 
-                    let valErrors1 = error.json().modelState;
-                    let valErrors2 = err.modelState;
+                    let valErrors1 = err.modelState;
 
                     for (var key in valErrors1) {
                         for (var i = 0; i < valErrors1[key].length; i++) {
                             errors.push(valErrors1[key][i]);
-                        }
-                    }
-
-                    for (var key in valErrors2) {
-                        for (var i = 0; i < valErrors2[key].length; i++) {
-                            errors.push(valErrors2[key][i]);
                         }
                     }
 
