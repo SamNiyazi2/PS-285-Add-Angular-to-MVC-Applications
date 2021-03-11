@@ -43,6 +43,9 @@ var ProductService = /** @class */ (function () {
         var options = new http_1.RequestOptions({ headers: headers });
         return this.http.put(this.url + '/' + product.productId, product, options).map(this.extractData).catch(this.handleErrors);
     };
+    ProductService.prototype.deleteProduct = function (id) {
+        return this.http.delete(this.url + '/' + id).map(function () { return null; }).catch(this.handleErrors);
+    };
     ProductService.prototype.extractData = function (res) {
         var body = res.json();
         return body || {};

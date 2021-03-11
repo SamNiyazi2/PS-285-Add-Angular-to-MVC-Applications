@@ -64,6 +64,15 @@ export class ProductListComponent implements OnInit {
     }
 
 
+    deleteProduct(product: Product) {
+
+        if (confirm('Delete this product? \n\nName: ' + product.productName)) {
+            this.productService.deleteProduct(product.productId).subscribe(() => this.getProducts(), errors => this.handleErrors(errors));
+        }
+
+    }
+
+
     search() {
 
         this.productService.search(this.searchEntity).subscribe(products => this.products = products, errors => this.handleErrors(errors));

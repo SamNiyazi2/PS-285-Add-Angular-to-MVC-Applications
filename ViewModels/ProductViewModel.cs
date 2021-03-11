@@ -69,7 +69,7 @@ namespace PTC
         public void HandleRequest()
         {
             LoadSearchCategories();
-            LoadCategories();
+            LoadCategories(ENUM_LOAD_CATEGORY_FOR.NA);
 
             switch (EventAction.ToLower())
             {
@@ -113,7 +113,16 @@ namespace PTC
         #endregion
 
         #region LoadCategories Method
-        public void LoadCategories()
+
+        public enum ENUM_LOAD_CATEGORY_FOR
+        {
+            NA,
+            Input,
+            Search
+
+        }
+
+        public void LoadCategories(ENUM_LOAD_CATEGORY_FOR option)
         {
             PTCData db = null;
 
@@ -123,7 +132,32 @@ namespace PTC
                 db = new PTCData();
 
                 // Load categories
+                Categories.Clear();
                 Categories.AddRange(db.Categories);
+
+
+                Category entity = new Category();
+
+                switch (option)
+                {
+                    case ENUM_LOAD_CATEGORY_FOR.Input:
+                        entity.CategoryId = 0;
+                        entity.CategoryName = "Make a selection";
+                        break;
+
+                    case ENUM_LOAD_CATEGORY_FOR.Search:
+                        entity.CategoryId = 0;
+                        entity.CategoryName = "Search All Categories";
+                        break;
+
+                }
+                if (option != ENUM_LOAD_CATEGORY_FOR.NA)
+                {
+                    Categories.Insert(0, entity);
+                }
+
+
+
             }
             catch (Exception ex)
             {
@@ -137,11 +171,12 @@ namespace PTC
         public void LoadSearchCategories()
         {
             // Get all categories from database
-            LoadCategories();
+            LoadCategories(ENUM_LOAD_CATEGORY_FOR.NA);
 
             if (Categories.Count > 0)
             {
                 // Load search categories
+                SearchCategories.Clear();
                 SearchCategories.AddRange(Categories);
 
                 // Add category for 'Search All'
@@ -281,16 +316,19 @@ namespace PTC
 
                 // Ensure the correct category is set
                 // 03/10/2021 06:57 pm - SSN - Added nullify 0 categoryID && Entity.Category != null
-                if (Entity.CategoryId == 0) { Entity.CategoryId = null; }
+                //if (Entity.CategoryId == 0)
+                //{
+                //    Entity.CategoryId = -1;
+                //}
 
-                if ((Entity.CategoryId == null || Entity.CategoryId == 0) && Entity.Category != null)
-                {
-                    Entity.Category = db.Categories.Find(Entity.Category.CategoryId);
-                }
-                else
-                {
-                    Entity.Category = db.Categories.Find(Entity.CategoryId);
-                }
+                ////////////if ((Entity.CategoryId == null || Entity.CategoryId == 0) && Entity.Category != null)
+                ////////////{
+                ////////////    Entity.Category = db.Categories.Find(Entity.Category.CategoryId);
+                ////////////}
+                ////////////else
+                ////////////{
+             //   Entity.Category = db.Categories.Find(Entity.CategoryId);
+                ////////////}
 
 
                 // Either Update or Insert product

@@ -47,6 +47,12 @@ var ProductListComponent = /** @class */ (function () {
     ProductListComponent.prototype.selectProduct = function (id) {
         this.router.navigate(['/productdetail', id]);
     };
+    ProductListComponent.prototype.deleteProduct = function (product) {
+        var _this = this;
+        if (confirm('Delete this product? \n\nName: ' + product.productName)) {
+            this.productService.deleteProduct(product.productId).subscribe(function () { return _this.getProducts(); }, function (errors) { return _this.handleErrors(errors); });
+        }
+    };
     ProductListComponent.prototype.search = function () {
         var _this = this;
         this.productService.search(this.searchEntity).subscribe(function (products) { return _this.products = products; }, function (errors) { return _this.handleErrors(errors); });

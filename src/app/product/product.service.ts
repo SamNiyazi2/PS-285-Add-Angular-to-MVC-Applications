@@ -67,6 +67,13 @@ export class ProductService {
     }
 
 
+    deleteProduct(id: number): Observable<Product> {
+
+        return this.http.delete(this.url + '/' + id).map(() => null).catch(this.handleErrors);
+
+    }
+
+
     private extractData(res: Response) {
         let body = res.json();
         

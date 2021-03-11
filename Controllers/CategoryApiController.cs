@@ -17,7 +17,7 @@ namespace PTC.Controllers
 
         public IHttpActionResult Get()
         {
-            return getCategories();
+            return getCategories(PTCViewModel.ENUM_LOAD_CATEGORY_FOR.Input);
         }
 
 
@@ -25,19 +25,19 @@ namespace PTC.Controllers
         [Route("SearchCategories")]
         public IHttpActionResult GetSearchCategories()
         {
-            return getCategories();
+            return getCategories(PTCViewModel.ENUM_LOAD_CATEGORY_FOR.Search);
         }
 
-        private IHttpActionResult getCategories()
+        private IHttpActionResult getCategories(PTCViewModel.ENUM_LOAD_CATEGORY_FOR option)
         {
             IHttpActionResult ret = null;
             PTCViewModel vm = new PTCViewModel();
 
-            vm.LoadSearchCategories();
+            vm.LoadCategories(option);
 
-            if (vm.SearchCategories.Count() > 0)
+            if (vm.Categories.Count() > 0)
             {
-                ret = Ok(vm.SearchCategories);
+                ret = Ok(vm.Categories);
             }
             else if (vm.LastException != null)
             {
