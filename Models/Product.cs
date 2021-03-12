@@ -29,10 +29,11 @@ namespace PTC.Models
 
         [StringLength(255)]
         public string Url { get; set; }
-        
-        public int? CategoryId { get; set; }
+
 
         [Required(ErrorMessage = "Category selection is required.")]
+        public int? CategoryId { get; set; }
+
         public virtual Category Category { get; set; }
     }
 

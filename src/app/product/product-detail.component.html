@@ -2,7 +2,18 @@
 <div class="row" *ngIf="!product">
     <p class="alert alert-danger">No product was selected.</p>
 </div>
- 
+
+<div class="row" *ngIf="messages  && messages .length">
+    <div class="col-xs-12">
+        <div class="alert alert-warning alert-short">
+            <ul>
+                <li *ngFor="let msg of messages ">[{{msg.key}}] - {{msg.msg}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
 
 <div class="row" *ngIf="product">
 
@@ -17,7 +28,7 @@
 
             <div class="panel-body">
 
-                <error-messages-display [errorMessages]="messages" accesskey="-"></error-messages-display>
+                <error-messages-display [errorMessages]="messages" keyname="-"></error-messages-display>
 
                 <!-- Begin detail area -->
 
@@ -34,7 +45,7 @@
                            [(ngModel)]="product.productName" />
                     <error-messages-display [errorMessages]="messages" keyname="productName"></error-messages-display>
                 </div>
-  
+
 
 
                 <div class="form-group">

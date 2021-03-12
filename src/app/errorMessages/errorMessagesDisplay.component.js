@@ -17,7 +17,7 @@ var ErrorMessagesDisplayComponent = /** @class */ (function () {
     }
     ErrorMessagesDisplayComponent.prototype.ngOnChanges = function () {
         var _this = this;
-        this.applicableErrorMessage = this.errorMessages.filter(function (r) { return r.key === ((_this.keyname === "-") ? '' : _this.keyname); });
+        this.applicableErrorMessage = this.errorMessages.filter(function (r) { return r.key === ((_this.keyname === "-") ? '' : _this.keyname) || (r.key && (r.key + "--").startsWith(_this.keyname)); });
     };
     __decorate([
         core_1.Input(),

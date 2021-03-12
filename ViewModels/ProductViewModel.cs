@@ -333,7 +333,6 @@ namespace PTC
                 Entity.Category = db.Categories.Find(Entity.CategoryId);
                 ////////////}
 
-
                 // Either Update or Insert product
                 if (PageMode == PDSAPageModeEnum.Edit)
                 {
@@ -371,10 +370,6 @@ namespace PTC
                 var databaseEntry = db.Entry(Entity).GetDatabaseValues();
 
 
-//                var entry1 = ex.Entries.Single();
-
-//                var clientValues1 = (Product)entry.Entity;
-
                 if (databaseEntry == null)
                 {
                     Messages.AddModelError(string.Empty,
@@ -382,9 +377,8 @@ namespace PTC
                 }
                 else
                 {
-                    //                  var databaseValues = (Product)databaseEntry.ToObject();
                     IEnumerable<String> fieldsList = databaseEntry.PropertyNames;
-                    
+
 
                     DbEntityEntry entry111 = ex.Entries.FirstOrDefault();
 
@@ -394,21 +388,23 @@ namespace PTC
                     {
                         string typeName = entry111.CurrentValues[fieldName].GetType().Name.ToLower();
 
-                        if (regex.Match(typeName).Length>0) continue;
+                        if (regex.Match(typeName).Length > 0) continue;
 
                         var temp1 = databaseEntry[fieldName];
                         var temp2 = entry111.CurrentValues[fieldName];
 
 
-                        if (!temp1.Equals(temp2) )
+                        if (!temp1.Equals(temp2))
                         {
-                            Messages.AddModelError(fieldName, "Current value: " + $"<br/>[{temp1}<br/>{temp2}");
+                            Messages.AddModelError(fieldName + "--1", "Use yours: " + $"{temp2}");
+                            Messages.AddModelError(fieldName + "--2", "Use theirs: " + $"{temp1}");
 
                         }
 
-                        Messages.AddModelError("", "Record was changed by someone else.  Please pick the values you choose to override.");
 
                     }
+
+                    Messages.AddModelError("", "Record was changed by someone else.  Please pick the values you choose to override.");
 
 
                     SetUIState(PageMode);

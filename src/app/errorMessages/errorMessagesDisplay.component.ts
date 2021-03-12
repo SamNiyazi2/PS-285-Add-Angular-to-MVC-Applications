@@ -18,7 +18,8 @@ export class ErrorMessagesDisplayComponent implements OnChanges {
 
 
     ngOnChanges(): void {
-        this.applicableErrorMessage = this.errorMessages.filter(r => r.key === ((this.keyname === "-") ? '' : this.keyname));
+
+        this.applicableErrorMessage = this.errorMessages.filter(r => r.key === ((this.keyname === "-") ? '' : this.keyname) || (r.key && (r.key + "--").startsWith(this.keyname)));
     }
 
 }
