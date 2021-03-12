@@ -1,23 +1,32 @@
 ﻿
 <form #productForm="ngForm">
+ 
+
+
 
     <div class="row" *ngIf="!product">
         <p class="alert alert-danger">No product was selected.</p>
     </div>
 
-    <div class="row" *ngIf="messages  && messages .length">
+    <div class="row" *ngIf="messages  && messages.length || ( productForm.form.touched && !productForm.form.valid )">
         <div class="col-xs-12">
             <div class="alert alert-warning alert-short">
                 <ul>
                     <li *ngFor="let msg of messages ">[{{msg.key}}] - {{msg.msg}}</li>
+                    <li [hidden]="!productName?.errors?.required">= Product name is required</li>
+                    <li [hidden]="!productName?.errors?.minlength">= Product name must be more than [{{productName?.errors?.minlength.requiredLength}}] characters</li>
+                    <li [hidden]="!productName?.errors?.maxlength">= Product name must be lest than [{{productName?.errors?.maxlength.requiredLength}}] characters</li>
+                    <li [hidden]="!introductionDate?.errors?.required">= Introduction date</li>
+                    <li [hidden]="!price?.errors?.required">= Price is required</li>
+                    <li [hidden]="!url?.errors?.required">= URL is required</li>
                 </ul>
             </div>
         </div>
     </div>
 
 
-
-    <div class="row" *ngIf="product">
+    *ngIf="product"
+    <div class="row">
 
         <div class="col-xs-12">
             <div class="panel panel-primary">
@@ -56,7 +65,12 @@
 
                     <div class="form-group">
                         <label for="categoryId">Product Category</label>
-                        <select id="categoryId" name="categoryId" [(ngModel)]="product.categoryId" class="form-control">
+                        <select id="categoryId" 
+                                name="categoryId"
+                                #categoryId="ngModel"
+                                required
+                                [(ngModel)]="product.categoryId" 
+                                class="form-control">
                             <option *ngFor="let cat of categories" value="{{cat.categoryId}}">{{cat.categoryName}}</option>
                         </select>
                         <error-messages-display [errorMessages]="messages" keyname="category"></error-messages-display>
@@ -68,9 +82,9 @@
                         <label for="introductionDate">Introduction Date</label>
                         <input id="introductionDate"
                                name="introductionDate"
-                               #introductionDate
+                               #introductionDate="ngModel"
                                required
-                               type="date"
+                               type="text"
                                class="form-control"
                                placeholder="Enter introduction date"
                                title="Enter introduction date"
@@ -83,6 +97,7 @@
                         <input id="price"
                                name="price"
                                #price="ngModel"
+                               required
                                type="number"
                                class="form-control"
                                placeholder="Enter price"
@@ -97,7 +112,7 @@
                         <label for="url">URL</label>
                         <input id="url"
                                name="url"
-                               #url
+                               #url="ngModel"
                                required
                                type="url"
                                class="form-control"
@@ -114,7 +129,7 @@
 
 
                 <div class="panel-footer">
-                    <button class="btn btn-success" (click)="saveProduct()">Save</button>
+                    <button class="btn btn-success" (click)="saveProduct()" [disabled]="productForm.form.valid">Save</button>
                     <button class="btn btn-primary" (click)="goBack()">Cancel</button>
                 </div>
 
