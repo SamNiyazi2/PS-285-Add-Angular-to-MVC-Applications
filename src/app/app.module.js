@@ -21,8 +21,7 @@ var product_detail_component_1 = require("./product/product-detail.component");
 var AutoFocusDirective_1 = require("./AutoFocusDirective");
 var index_1 = require("./errorMessages/index");
 var index_2 = require("./errorMessages/index");
-var validator_notlowercase_1 = require("./shared/validator-notlowercase");
-var validator_min_1 = require("./shared/validator-min");
+var index_3 = require("./shared/index");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -36,8 +35,9 @@ var AppModule = /** @class */ (function () {
                 AutoFocusDirective_1.AutoFocusDirective,
                 index_1.ErrorMessageFilterPipe,
                 index_2.ErrorMessagesDisplayComponent,
-                validator_notlowercase_1.NotLowerCaseValidatorDirective,
-                validator_min_1.MinValidatorDirective
+                index_3.NotLowerCaseValidatorDirective,
+                index_3.MinValidatorDirective,
+                index_3.MaxValidatorDirective
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: [

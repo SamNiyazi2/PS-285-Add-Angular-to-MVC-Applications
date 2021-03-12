@@ -1,5 +1,4 @@
 "use strict";
-// 03/11/2021 09:39 pm - SSN - [20210311-2139] - [001] - M08-08 - Create the min validator
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,46 +9,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
-exports.min = function (min) {
+var core_1 = require("@angular/core");
+// 03/11/2021 10:30 pm - SSN - [20210311-2229] - [001] - M08-10 - Create the use max validator directive
+exports.max = function (max) {
     return function (c) {
         var result = null;
-        if (min != undefined && min !== null) {
-            var value = +c.value;
-            if (value < +min) {
-                result = { min: min };
+        if (max != undefined && max != null) {
+            if (+c.value > +max) {
+                result = { max: max };
             }
         }
         return result;
     };
 };
-var MinValidatorDirective = /** @class */ (function () {
-    function MinValidatorDirective() {
+var MaxValidatorDirective = /** @class */ (function () {
+    function MaxValidatorDirective() {
     }
-    MinValidatorDirective_1 = MinValidatorDirective;
-    MinValidatorDirective.prototype.ngOnInit = function () {
-        this.validator = exports.min(this.min);
+    MaxValidatorDirective_1 = MaxValidatorDirective;
+    MaxValidatorDirective.prototype.ngOnInit = function () {
+        this.validator = exports.max(this.max);
     };
-    MinValidatorDirective.prototype.validate = function (c) {
+    MaxValidatorDirective.prototype.validate = function (c) {
         return this.validator(c);
     };
-    var MinValidatorDirective_1;
+    var MaxValidatorDirective_1;
     __decorate([
         core_1.Input(),
         __metadata("design:type", Number)
-    ], MinValidatorDirective.prototype, "min", void 0);
-    MinValidatorDirective = MinValidatorDirective_1 = __decorate([
+    ], MaxValidatorDirective.prototype, "max", void 0);
+    MaxValidatorDirective = MaxValidatorDirective_1 = __decorate([
         core_1.Directive({
-            selector: '[min]',
+            selector: '[max]',
             providers: [{
                     provide: forms_1.NG_VALIDATORS,
-                    useExisting: core_1.forwardRef(function () { return MinValidatorDirective_1; }),
+                    useExisting: core_1.forwardRef(function () { return MaxValidatorDirective_1; }),
                     multi: true
                 }]
         })
-    ], MinValidatorDirective);
-    return MinValidatorDirective;
+    ], MaxValidatorDirective);
+    return MaxValidatorDirective;
 }());
-exports.MinValidatorDirective = MinValidatorDirective;
-//# sourceMappingURL=validator-min.directive.js.map
+exports.MaxValidatorDirective = MaxValidatorDirective;
+//# sourceMappingURL=validator-max.directive.js.map
