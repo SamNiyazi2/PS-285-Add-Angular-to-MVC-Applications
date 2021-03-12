@@ -1,4 +1,5 @@
 "use strict";
+// 03/11/2021 08:42 pm - SSN - [20210311-2041] - [001] - M08-05 - Create the NotLowerCase validator
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,14 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var forms_1 = require("@angular/forms");
 var core_1 = require("@angular/core");
-// 03/11/2021 08:42 pm - SSN - [20210311-2041] - [001] - M08-05 - Create the NotLowerCase validator
+var forms_1 = require("@angular/forms");
 function notLowerCaseValidate(c) {
     var result = null;
     var value = c.value;
     if (value) {
-        if (value.toString().trim() === value.toString().toLowerCase().trim()) {
+        if (value.toString().trim().length > 1 && value.toString().trim() === value.toString().toLowerCase().trim()) {
             result = { validateNotLowercase: { value: value } };
         }
     }
@@ -34,7 +34,7 @@ var NotLowerCaseValidatorDirective = /** @class */ (function () {
     var NotLowerCaseValidatorDirective_1;
     NotLowerCaseValidatorDirective = NotLowerCaseValidatorDirective_1 = __decorate([
         core_1.Directive({
-            selector: '[validateNoLowercase]',
+            selector: '[validateNotLowercase]',
             providers: [{
                     provide: forms_1.NG_VALIDATORS,
                     useExisting: core_1.forwardRef(function () { return NotLowerCaseValidatorDirective_1; }),

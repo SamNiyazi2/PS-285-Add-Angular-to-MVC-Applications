@@ -13,12 +13,13 @@
             <div class="alert alert-warning alert-short">
                 <ul>
                     <li *ngFor="let msg of messages ">[{{msg.key}}] - {{msg.msg}}</li>
-                    <li [hidden]="!productName?.errors?.required">= Product name is required</li>
-                    <li [hidden]="!productName?.errors?.minlength">= Product name must be more than [{{productName?.errors?.minlength.requiredLength}}] characters</li>
-                    <li [hidden]="!productName?.errors?.maxlength">= Product name must be lest than [{{productName?.errors?.maxlength.requiredLength}}] characters</li>
-                    <li [hidden]="!introductionDate?.errors?.required">= Introduction date</li>
-                    <li [hidden]="!price?.errors?.required">= Price is required</li>
-                    <li [hidden]="!url?.errors?.required">= URL is required</li>
+                    <li [hidden]="!productName?.errors?.required">Product name is required</li>
+                    <li [hidden]="!productName?.errors?.minlength">Product name must be more than [{{productName?.errors?.minlength?.requiredLength}}] characters</li>
+                    <li [hidden]="!productName?.errors?.maxlength">Product name must be less than [{{productName?.errors?.maxlength?.requiredLength}}] characters</li>
+                    <li [hidden]="!productName?.errors?.validateNotLowercase">Product name must not be all lower case</li>
+                    <li [hidden]="!introductionDate?.errors?.required">Introduction date is required</li>
+                    <li [hidden]="!price?.errors?.required">Price is required</li>
+                    <li [hidden]="!url?.errors?.required">URL is required</li>
                 </ul>
             </div>
         </div>
@@ -52,6 +53,7 @@
                                required
                                minlength="4"
                                maxlength="50"
+                               validateNotLowercase
                                type="text"
                                class="form-control"
                                autofocus-v2
