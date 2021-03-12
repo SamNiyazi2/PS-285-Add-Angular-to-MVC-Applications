@@ -17,11 +17,22 @@ import { AutoFocusDirective } from './AutoFocusDirective';
 import { ErrorMessageFilterPipe } from './errorMessages/index';
 import { ErrorMessagesDisplayComponent } from './errorMessages/index';
 import { NotLowerCaseValidatorDirective } from './shared/validator-notlowercase';
+import { MinValidatorDirective } from './shared/validator-min';
 
 
 @NgModule({
     imports: [BrowserModule, AppRoutingModule, HttpModule, FormsModule],
-    declarations: [AppComponent, ProductListComponent, ProductDetailComponent, AutoFocusDirective, ErrorMessageFilterPipe, ErrorMessagesDisplayComponent , NotLowerCaseValidatorDirective],
+    declarations: [
+
+        AppComponent,
+        ProductListComponent,
+        ProductDetailComponent,
+        AutoFocusDirective,
+        ErrorMessageFilterPipe,
+        ErrorMessagesDisplayComponent,
+        NotLowerCaseValidatorDirective,
+        MinValidatorDirective],
+
     bootstrap: [AppComponent],
     providers: [
         {
@@ -30,6 +41,7 @@ import { NotLowerCaseValidatorDirective } from './shared/validator-notlowercase'
         }
         , ProductService
         , CategoryService
+        
     ]
 
 })

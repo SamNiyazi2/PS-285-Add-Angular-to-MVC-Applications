@@ -22,13 +22,23 @@ var AutoFocusDirective_1 = require("./AutoFocusDirective");
 var index_1 = require("./errorMessages/index");
 var index_2 = require("./errorMessages/index");
 var validator_notlowercase_1 = require("./shared/validator-notlowercase");
+var validator_min_1 = require("./shared/validator-min");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, app_routing_module_1.AppRoutingModule, http_1.HttpModule, forms_1.FormsModule],
-            declarations: [app_component_1.AppComponent, product_list_component_1.ProductListComponent, product_detail_component_1.ProductDetailComponent, AutoFocusDirective_1.AutoFocusDirective, index_1.ErrorMessageFilterPipe, index_2.ErrorMessagesDisplayComponent, validator_notlowercase_1.NotLowerCaseValidatorDirective],
+            declarations: [
+                app_component_1.AppComponent,
+                product_list_component_1.ProductListComponent,
+                product_detail_component_1.ProductDetailComponent,
+                AutoFocusDirective_1.AutoFocusDirective,
+                index_1.ErrorMessageFilterPipe,
+                index_2.ErrorMessagesDisplayComponent,
+                validator_notlowercase_1.NotLowerCaseValidatorDirective,
+                validator_min_1.MinValidatorDirective
+            ],
             bootstrap: [app_component_1.AppComponent],
             providers: [
                 {

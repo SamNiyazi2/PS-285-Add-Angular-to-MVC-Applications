@@ -19,6 +19,7 @@
                     <li [hidden]="!productName?.errors?.validateNotLowercase">Product name must not be all lower case</li>
                     <li [hidden]="!introductionDate?.errors?.required">Introduction date is required</li>
                     <li [hidden]="!price?.errors?.required">Price is required</li>
+                    <li [hidden]="!price?.errors?.min">Price must be greater than {{price?.errors?.min  }}</li>
                     <li [hidden]="!url?.errors?.required">URL is required</li>
                 </ul>
             </div>
@@ -100,6 +101,7 @@
                                name="price"
                                #price="ngModel"
                                required
+                               min=2.10
                                type="number"
                                class="form-control"
                                placeholder="Enter price"
