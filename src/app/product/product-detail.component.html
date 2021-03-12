@@ -1,109 +1,124 @@
 ﻿
-<div class="row" *ngIf="!product">
-    <p class="alert alert-danger">No product was selected.</p>
-</div>
+<form #productForm="ngForm">
 
-<div class="row" *ngIf="messages  && messages .length">
-    <div class="col-xs-12">
-        <div class="alert alert-warning alert-short">
-            <ul>
-                <li *ngFor="let msg of messages ">[{{msg.key}}] - {{msg.msg}}</li>
-            </ul>
+    <div class="row" *ngIf="!product">
+        <p class="alert alert-danger">No product was selected.</p>
+    </div>
+
+    <div class="row" *ngIf="messages  && messages .length">
+        <div class="col-xs-12">
+            <div class="alert alert-warning alert-short">
+                <ul>
+                    <li *ngFor="let msg of messages ">[{{msg.key}}] - {{msg.msg}}</li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
 
 
 
-<div class="row" *ngIf="product">
+    <div class="row" *ngIf="product">
 
-    <div class="col-xs-12">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h1 class="panel-title">
-                    Product Information
-                    <span class="small">(Angular)</span>
-                </h1>
+        <div class="col-xs-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="panel-title">
+                        Product Information
+                        <span class="small">(Angular)</span>
+                    </h1>
+                </div>
+
+                <div class="panel-body">
+
+                    <error-messages-display [errorMessages]="messages" keyname="-"></error-messages-display>
+
+                    <!-- Begin detail area -->
+
+
+                    <div class="form-group">
+                        <label for="productName">Product name</label>
+                        <input id="productName"
+                               name="productName"
+                               #productName="ngModel"
+                               required
+                               minlength="4"
+                               maxlength="50"
+                               type="text"
+                               class="form-control"
+                               autofocus-v2
+                               placeholder="Enter product name"
+                               title="Enter product naem"
+                               [(ngModel)]="product.productName" />
+                        <error-messages-display [errorMessages]="messages" keyname="productName"></error-messages-display>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="categoryId">Product Category</label>
+                        <select id="categoryId" name="categoryId" [(ngModel)]="product.categoryId" class="form-control">
+                            <option *ngFor="let cat of categories" value="{{cat.categoryId}}">{{cat.categoryName}}</option>
+                        </select>
+                        <error-messages-display [errorMessages]="messages" keyname="category"></error-messages-display>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="introductionDate">Introduction Date</label>
+                        <input id="introductionDate"
+                               name="introductionDate"
+                               #introductionDate
+                               required
+                               type="date"
+                               class="form-control"
+                               placeholder="Enter introduction date"
+                               title="Enter introduction date"
+                               [(ngModel)]="product.introductionDate" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input id="price"
+                               name="price"
+                               #price="ngModel"
+                               type="number"
+                               class="form-control"
+                               placeholder="Enter price"
+                               title="Enter price"
+                               [(ngModel)]="product.price" />
+                        <error-messages-display [errorMessages]="messages" keyname="price"></error-messages-display>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="url">URL</label>
+                        <input id="url"
+                               name="url"
+                               #url
+                               required
+                               type="url"
+                               class="form-control"
+                               placeholder="Enter the URL"
+                               title="Enter the URL"
+                               [(ngModel)]="product.url" />
+                        <error-messages-display [errorMessages]="messages" keyname="url"></error-messages-display>
+                    </div>
+
+                    <!-- End detail area -->
+
+
+                </div>
+
+
+                <div class="panel-footer">
+                    <button class="btn btn-success" (click)="saveProduct()">Save</button>
+                    <button class="btn btn-primary" (click)="goBack()">Cancel</button>
+                </div>
+
             </div>
-
-            <div class="panel-body">
-
-                <error-messages-display [errorMessages]="messages" keyname="-"></error-messages-display>
-
-                <!-- Begin detail area -->
-
-
-                <div class="form-group">
-                    <label for="productName">Product name</label>
-                    <input id="productName"
-                           name="productName"
-                           type="text"
-                           class="form-control"
-                           autofocus-v2
-                           placeholder="Enter product name"
-                           title="Enter product naem"
-                           [(ngModel)]="product.productName" />
-                    <error-messages-display [errorMessages]="messages" keyname="productName"></error-messages-display>
-                </div>
-
-
-
-                <div class="form-group">
-                    <label for="categoryId">Product Category</label>
-                    <select id="categoryId" name="categoryId" [(ngModel)]="product.categoryId" class="form-control">
-                        <option *ngFor="let cat of categories" value="{{cat.categoryId}}">{{cat.categoryName}}</option>
-                    </select>
-                    <error-messages-display [errorMessages]="messages" keyname="category"></error-messages-display>
-                </div>
-
-
-
-                <div class="form-group">
-                    <label for="introductionDate">Introduction Date</label>
-                    <input id="introductionDate"
-                           type="date"
-                           class="form-control"
-                           placeholder="Enter introduction date"
-                           title="Enter introduction date"
-                           [(ngModel)]="product.introductionDate" />
-
-                </div>
-
-                <div class="form-group">
-                    <label for="price">Price</label>
-                    <input id="price"
-                           type="number"
-                           class="form-control"
-                           placeholder="Enter price"
-                           title="Enter price"
-                           [(ngModel)]="product.price" />
-                    <error-messages-display [errorMessages]="messages" keyname="price"></error-messages-display>
-                </div>
-
-
-
-                <div class="form-group">
-                    <label for="url">URL</label>
-                    <input id="url"
-                           type="url"
-                           class="form-control"
-                           placeholder="Enter the URL"
-                           title="Enter the URL"
-                           [(ngModel)]="product.url" />
-                    <error-messages-display [errorMessages]="messages" keyname="url"></error-messages-display>
-                </div>
-
-                <!-- End detail area -->
-
-
-            </div>
-
-
-            <div class="panel-footer">
-                <button class="btn btn-success" (click)="saveProduct()">Save</button>
-                <button class="btn btn-primary" (click)="goBack()">Cancel</button>
-            </div>
-
         </div>
     </div>
-</div>
+</form>
