@@ -64,8 +64,14 @@ var ProductListComponent = /** @class */ (function () {
         var indexDeleted = this.products.findIndex(function (r) { return r.productId === product.productId; });
         this.products.splice(indexDeleted, 1);
     };
-    ProductListComponent.prototype.search = function () {
+    ProductListComponent.prototype.search = function (formObj) {
         var _this = this;
+        var productName = this.searchEntity.productName;
+        productName = productName.trim();
+        if (productName == "") {
+            return;
+        }
+        alert("[" + this.searchEntity.productName + "] 20210528-1419");
         this.productService.search(this.searchEntity).subscribe(function (products) { return _this.products = products; }, function (errors) { return _this.handleErrors(errors); });
     };
     ProductListComponent.prototype.resetSearch = function () {

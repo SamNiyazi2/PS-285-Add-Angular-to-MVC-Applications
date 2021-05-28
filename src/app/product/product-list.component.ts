@@ -93,7 +93,15 @@ export class ProductListComponent implements OnInit {
 
 
 
-    search() {
+    search(formObj) {
+
+        let productName = this.searchEntity.productName;
+        productName = productName.trim();
+
+        if (productName == "") {
+            return;
+        }
+        alert("[" + this.searchEntity.productName + "] 20210528-1419");
 
         this.productService.search(this.searchEntity).subscribe(products => this.products = products, errors => this.handleErrors(errors));
     }

@@ -24,6 +24,7 @@
                 <div class="form-group">
                     <label for="searchProductName">Product Name</label>
                     <input type="text" id="searchProductName" name="searchProductName" [(ngModel)]="searchEntity.productName" class="form-control" />
+
                 </div>
 
             </div>
@@ -32,7 +33,7 @@
 
                 <button formnovalidate="formnovalidate"
                         class="btn btn-sm btn-primary"
-                        (click)="search()">
+                        (click)="search(this)">
                     <i class="glyphicon glyphicon-search"></i>
                     &nbsp; Search
                 </button>

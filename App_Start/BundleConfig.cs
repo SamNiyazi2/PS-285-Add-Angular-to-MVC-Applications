@@ -14,6 +14,14 @@ namespace PTC
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
+
+            // 05/28/2021 12:04 pm - SSN - [20210528-1203] - [001] - Add validation
+
+            bundles.Add(new ScriptBundle("~/bundles/validators").Include(
+            "~/Scripts/jquery.validate.js",
+            "~/Scripts/jquery.validate.unobtrusive.js"));
+  
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
