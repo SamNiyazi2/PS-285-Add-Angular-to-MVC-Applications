@@ -17,16 +17,20 @@ var routes = [
         // All routes must be in lowercase
         // All routes must be in lowercase
         // All routes must be in lowercase
-        path: 'productlist',
+        path: 'product_ang',
         component: product_list_component_1.ProductListComponent
     },
-    {
-        path: 'product/product_ang',
-        redirectTo: 'productlist'
-    },
+    //{
+    //    path: 'product/product_ang',
+    //    redirectTo: 'productlist'
+    //},
     {
         path: 'productdetail/:id',
         component: product_detail_component_1.ProductDetailComponent
+    },
+    {
+        path: '**',
+        redirectTo: 'product_ang'
     }
 ];
 var AppRoutingModule = /** @class */ (function () {

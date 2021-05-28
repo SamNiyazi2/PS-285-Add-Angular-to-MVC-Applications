@@ -1,22 +1,22 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    
-    <base href="~/src/" >
 
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="~/src/">
 
-@{ 
-    string subTitle = "";
-    if (!string.IsNullOrEmpty(ViewBag.Title))
-    {
-        subTitle = ViewBag.Title + " - " ;
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    @{
+        string subTitle = "";
+        if (!string.IsNullOrEmpty(ViewBag.Title))
+        {
+            subTitle = ViewBag.Title + " - ";
+        }
     }
-}
-  <title>@subTitle Paul's Training Company</title>
-  @Styles.Render("~/Content/css")
-  @Scripts.Render("~/bundles/modernizr")
+    <title>@subTitle Paul's Training Company</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -31,8 +31,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Products", "Product", "Product")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", null, new { target = "home" })</li>
+                    <li>@Html.ActionLink("Products (MVC)", "Product", "Product",null, new { target = "_mvc_product" })</li>
+                    <li><a href="~/src/product_ang" target = "_ang_product">Products (Angular)</a></li>
+
                 </ul>
             </div>
         </div>

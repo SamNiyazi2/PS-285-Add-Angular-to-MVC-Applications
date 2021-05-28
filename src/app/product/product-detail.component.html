@@ -6,6 +6,7 @@
 
     <div class="row" *ngIf="!product">
         <p class="alert alert-danger">No product was selected.</p>
+        <p><a href="~/src/product_ang">Products List</a></p>
     </div>
 
     <div class="row" *ngIf="messages  && messages.length || ( productForm.form.touched && !productForm.form.valid )">
@@ -28,14 +29,14 @@
     </div>
 
 
-    *ngIf="product"
-    <div class="row">
+   
+    <div class="row"  *ngIf="product">
 
         <div class="col-xs-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h1 class="panel-title">
-                        Product Information
+                        Product Information 
                         <span class="small">(Angular)</span>
                     </h1>
                 </div>

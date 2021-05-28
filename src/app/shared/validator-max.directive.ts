@@ -5,7 +5,7 @@ import { Directive, forwardRef, OnInit, Input } from "@angular/core";
 
 export const max = (max: number): ValidatorFn => {
 
-    return (c: AbstractControl): { [key: string]: any }{
+    return (c: AbstractControl): { [key: string]: any } => {
 
         let result = null;
 

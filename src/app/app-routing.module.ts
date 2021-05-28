@@ -17,18 +17,22 @@ const routes: Routes = [
         // All routes must be in lowercase
         // All routes must be in lowercase
         // All routes must be in lowercase
-        path: 'productlist',
+        path: 'product_ang',
         component: ProductListComponent
     },
-    {
-        path: 'product/product_ang',
-        redirectTo: 'productlist'
-    },
+    //{
+    //    path: 'product/product_ang',
+    //    redirectTo: 'productlist'
+    //},
     {
         path: 'productdetail/:id',
         component: ProductDetailComponent
     }
-
+    ,
+    {
+        path: '**',
+        redirectTo: 'product_ang'
+    }
 ];
 
 
