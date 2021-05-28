@@ -64,17 +64,35 @@ var ProductListComponent = /** @class */ (function () {
         var indexDeleted = this.products.findIndex(function (r) { return r.productId === product.productId; });
         this.products.splice(indexDeleted, 1);
     };
+    ProductListComponent.prototype.addMessage = function (msg) {
+        this.messages.push(msg);
+    };
+    ProductListComponent.prototype.clearMessages = function () {
+        this.messages.splice(0, this.messages.length);
+    };
     ProductListComponent.prototype.search = function (formObj) {
         var _this = this;
+        this.clearMessages();
         var productName = this.searchEntity.productName;
-        productName = productName.trim();
+        productName = (productName ? productName : "").trim();
         if (productName == "") {
+            this.addMessage("Please enter product name. (Accepts partial entries)");
             return;
         }
-        alert("[" + this.searchEntity.productName + "] 20210528-1419");
-        this.productService.search(this.searchEntity).subscribe(function (products) { return _this.products = products; }, function (errors) { return _this.handleErrors(errors); });
+        this.productService.search(this.searchEntity).subscribe(function (products) {
+            _this.products = products;
+            if (_this.products.length == 0) {
+                if (_this.searchEntity.productName) {
+                    _this.addMessage("No products were found that matched your provided input.");
+                }
+                else {
+                    _this.addMessage("No products on file.");
+                }
+            }
+        }, function (errors) { return _this.handleErrors(errors); });
     };
     ProductListComponent.prototype.resetSearch = function () {
+        this.clearMessages();
         this.searchEntity.categoryId = 0;
         this.searchEntity.productName = '';
         this.getProducts();

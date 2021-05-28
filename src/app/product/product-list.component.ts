@@ -92,24 +92,46 @@ export class ProductListComponent implements OnInit {
     }
 
 
+    addMessage(msg) {
+        this.messages.push(msg);
+    }
+
+
+    clearMessages() {
+        this.messages.splice(0, this.messages.length);
+    }
+
 
     search(formObj) {
 
+        this.clearMessages();
+
         let productName = this.searchEntity.productName;
-        productName = productName.trim();
+        productName = (productName ? productName : "").trim();
 
         if (productName == "") {
+            this.addMessage("Please enter product name. (Accepts partial entries)");
             return;
         }
-        alert("[" + this.searchEntity.productName + "] 20210528-1419");
 
-        this.productService.search(this.searchEntity).subscribe(products => this.products = products, errors => this.handleErrors(errors));
+        this.productService.search(this.searchEntity).subscribe(products => {
+            this.products = products;
+            if (this.products.length == 0) {
+                if (this.searchEntity.productName) {
+                    this.addMessage("No products were found that matched your provided input.");
+                } else {
+                    this.addMessage("No products on file.");
+                }
+            }
+        }, errors => this.handleErrors(errors));
     }
 
 
 
 
     resetSearch() {
+
+        this.clearMessages();
 
         this.searchEntity.categoryId = 0;
         this.searchEntity.productName = '';
