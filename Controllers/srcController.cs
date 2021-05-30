@@ -6,25 +6,28 @@ using System.Web.Mvc;
 
 namespace PTC.Controllers
 {
+    // 05/29/2021 12:21 am - SSN - [20210528-1458] - [006] - Angular validations - New product
+    // Addresses issue with calling "src" only.  Angular takes care of invalid calls passed "src/".
+
     public class srcController : Controller
     {
         // GET: src
-        public ActionResult product_ang()
+        public ActionResult index()
         {
-         //   return RedirectToAction("product_ang", "product");
-            return View();
+            return RedirectToAction("product_ang");
         }
 
-        //public ActionResult productdetail(string id)
-        //{
-        //    return RedirectToAction("product_ang", "product");
-        //}
+        public ActionResult product_ang()
+        {
+            return View();
+        }
 
 
         protected override void HandleUnknownAction(string actionName)
         {
-            Response.Redirect("/src/"+actionName, true);
-           
+            Response.Redirect("/src/" + actionName, true);
+
         }
+
     }
 }

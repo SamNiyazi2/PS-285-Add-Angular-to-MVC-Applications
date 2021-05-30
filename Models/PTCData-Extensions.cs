@@ -44,57 +44,82 @@ namespace PTC.Models
             List<DbValidationError> list =
             new List<DbValidationError>();
 
-            // Check ProductName field
-            if (string.IsNullOrEmpty(entity.ProductName))
+            // 05/29/2021 11:48 am - SSN - [20210528-1458] - [016] - Angular validations - New product
+            // Add try/catch
+            try
             {
-                list.Add(new DbValidationError("ProductName",
-                    "Product Name must be filled in."));
-            }
-            else
-            {
-                if (entity.ProductName.ToLower() ==
-                    entity.ProductName)
+
+                // Check ProductName field
+                if (string.IsNullOrEmpty(entity.ProductName))
                 {
                     list.Add(new DbValidationError("ProductName",
-                      "Product Name must not be all lower case."));
+                        "Product Name must be filled in."));
                 }
-                if (entity.ProductName.Length < 4 ||
-                    entity.ProductName.Length > 150)
+                else
                 {
-                    list.Add(new DbValidationError("ProductName",
-                      "Product Name must have between 4 and 150 characters."));
+                    if (entity.ProductName.ToLower() ==
+                        entity.ProductName)
+                    {
+                        list.Add(new DbValidationError("ProductName",
+                          "Product Name must not be all lower case."));
+                    }
+                    if (entity.ProductName.Length < 4 ||
+                        entity.ProductName.Length > 150)
+                    {
+                        list.Add(new DbValidationError("ProductName",
+                          "Product Name must have between 4 and 150 characters."));
+                    }
                 }
-            }
 
-            // Check IntroductionDate field
-            if (entity.IntroductionDate < DateTime.Now.AddYears(-5))
-            {
-                list.Add(new DbValidationError("IntroductionDate",
-                  "Introduction date must be within the last five years."));
-            }
+                // 05/28/2021 02:58 pm - SSN - [20210528-1458] - [001] - Angular validations - New product 
+                // 05/29/2021 11:35 am - SSN - [20210528-1458] - [013] - Angular validations - New product
+                // if (entity.Category.CategoryId <= 0)
+                if (entity.CategoryId <= 0)
+                {
+                    // 05/29/2021 01:36 pm - SSN - [20210528-1458] - [017] - Angular validations - New product
+                    // list.Add(new DbValidationError("Category",
+                    list.Add(new DbValidationError("CategoryId",
+                      "Category is required."));
 
-            // Check Price field
-            if (entity.Price < Convert.ToDecimal(0.1) ||
-                entity.Price > Convert.ToDecimal(9999.99))
-            {
-                list.Add(new DbValidationError("Price",
-                  "Price must be between $0.1 and less than $9, 999.99."));
-            }
+                }
 
-            // Check Url field
-            if (string.IsNullOrEmpty(entity.Url))
-            {
-                list.Add(new DbValidationError("Url",
-                    "Url must be filled in."));
-            }
-            else
-            {
-                if (entity.Url.Length < 5 ||
-                    entity.Url.Length > 255)
+
+                // Check IntroductionDate field
+                if (entity.IntroductionDate < DateTime.Now.AddYears(-5))
+                {
+                    list.Add(new DbValidationError("IntroductionDate",
+                      "Introduction date must be within the last five years."));
+                }
+
+                // Check Price field
+                if (entity.Price < Convert.ToDecimal(0.1) ||
+                    entity.Price > Convert.ToDecimal(9999.99) ||
+                    // 05/29/2021 01:45 pm - SSN - [20210528-1458] - [018] - Angular validations - New product
+                    !entity.Price.HasValue)
+                {
+                    list.Add(new DbValidationError("Price",
+                      "Price must be between $0.1 and less than $9, 999.99."));
+                }
+
+                // Check Url field
+                if (string.IsNullOrEmpty(entity.Url))
                 {
                     list.Add(new DbValidationError("Url",
-                      "Url must have between 5 and 255 characters."));
+                        "Url must be filled in."));
                 }
+                else
+                {
+                    if (entity.Url.Length < 5 ||
+                        entity.Url.Length > 255)
+                    {
+                        list.Add(new DbValidationError("Url",
+                          "Url must have between 5 and 255 characters."));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                list.Add(new DbValidationError("",$"[ssn-20210529-1153] [{ex.Message}"));
             }
 
             return list;

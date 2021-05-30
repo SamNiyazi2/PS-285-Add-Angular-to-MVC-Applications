@@ -22,7 +22,10 @@ namespace PTC.Models
 
         [JsonProperty]
         [JsonConverter(typeof(ShortDateConverter))]
-        public DateTime? IntroductionDate { get; set; }
+        // 05/30/2021 11:55 am - SSN - [20210530-1151] - [001] - MVC concurrency
+
+        [DisplayFormat(ApplyFormatInEditMode =true,DataFormatString ="{0:MM/dd/yyyy}")]
+        public DateTime IntroductionDate { get; set; }
 
         [Column(TypeName = "money")]
         public decimal? Price { get; set; }
@@ -32,7 +35,7 @@ namespace PTC.Models
 
 
         [Required(ErrorMessage = "Category selection is required.")]
-        public int? CategoryId { get; set; }
+        public int CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
     }

@@ -3,11 +3,12 @@
 
 import { Directive, forwardRef, OnInit, Input, SimpleChange } from "@angular/core";
 import { ValidatorFn, AbstractControl, NG_VALIDATORS, Validator, ValidationErrors } from "@angular/forms";
+import { ccl } from "../errorMessages/errorMessage.model";
 
 export const min = (min: number): ValidatorFn => {
-
+     
     return (c: AbstractControl): { [key: string]: number } => {
-
+         
         let result: any = null;
 
         if (min != undefined && min !== null) {
@@ -39,7 +40,7 @@ export class MinValidatorDirective implements Validator, OnInit {
 
     private validator: ValidatorFn;
 
-    ngOnInit(): void {
+    ngOnInit(): void { 
 
         this.validator = min(this.min);
     }
@@ -47,27 +48,5 @@ export class MinValidatorDirective implements Validator, OnInit {
     validate(c: AbstractControl): ValidationErrors {
         return this.validator(c);
     }
-
-
-    //private onChange: () => void;
-
-    //ngOnChange(changes: SimpleChange) {
-
-    //    for (let key in changes) {
-
-    //        if (key === 'min') {
-
-    //            this.validator = min(changes[key].currentValue);
-    //            if (this.onChange) {
-    //                this.onChange();
-    //            }
-    //        }
-    //    }
-    //}
-
-
-    //registerOnValidatorChange(fn: () => void): void {
-    //    this.onChange = fn;
-    //}
-
+     
 }

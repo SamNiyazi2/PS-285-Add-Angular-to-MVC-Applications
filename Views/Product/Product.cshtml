@@ -53,6 +53,17 @@
                 $("#EventAction").val($(this).data("pdsa-action"));
                 $("#EventArgument").val($(this).data("pdsa-arg"));
 
+
+                // 05/29/2021 12:26 am - SSN - [20210528-1458] - [007] - Angular validations - New product
+                // Needed to prevent firing validation on blank search term.
+
+                const formAction = $(this).data("pdsa-action");
+                
+                if (formAction != "search") {
+                   
+                    $("form").validate().cancelSubmit=true;
+                }
+
                 if (submit) {
                     // Submit form with hidden values filled in
                     $("form").submit();

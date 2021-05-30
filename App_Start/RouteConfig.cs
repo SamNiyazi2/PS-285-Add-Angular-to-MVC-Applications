@@ -7,27 +7,27 @@ using System.Web.Routing;
 
 namespace PTC
 {
-  public class RouteConfig
-  {
-    public static void RegisterRoutes(RouteCollection routes)
+    public class RouteConfig
     {
-      routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+        public static void RegisterRoutes(RouteCollection routes)
+        {
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                               name: "angularRoute",
+                               url: "src/{*url}",
+                               defaults: new { controller = "src", action = "product_ang" } // The view that bootstraps Angular 5
+                           );
 
 
             routes.MapRoute(
-       name: "angular",
-       url: "src/{*url}",
-       defaults: new { controller = "src" , action = "product_ang" } // The view that bootstraps Angular 5
-   );
-
-            routes.MapRoute(
-          name: "Default",
-          url: "{controller}/{action}/{id}",
-          defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-      );
+                              name: "Default",
+                              url: "{controller}/{action}/{id}",
+                              defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                          );
 
 
 
         }
-  }
+    }
 }

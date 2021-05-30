@@ -72,7 +72,17 @@ namespace PTC
         public void HandleRequest()
         {
             LoadSearchCategories();
-            LoadCategories(ENUM_LOAD_CATEGORY_FOR.NA);
+
+            if (EventAction.ToLower() == "add" || EventAction.ToLower() == "save")
+            {
+                // 05/29/2021 11:11 am - SSN - [20210528-1458] - [009] - Angular validations - New product
+             
+                LoadCategories(ENUM_LOAD_CATEGORY_FOR.Input);
+            }
+            else
+            {
+                LoadCategories(ENUM_LOAD_CATEGORY_FOR.NA);
+            }
 
             switch (EventAction.ToLower())
             {
@@ -277,7 +287,12 @@ namespace PTC
         {
             // Initialize Entity Object
             Entity = new Product();
-            Entity.IntroductionDate = DateTime.Now;
+
+            // 05/29/2021 11:22 am - SSN - [20210528-1458] - [011] - Angular validations - New product
+            // Entity.IntroductionDate = DateTime.Now;
+            Entity.IntroductionDate = DateTime.Today;
+
+
             Entity.Url = string.Empty;
             Entity.Price = 0;
 
@@ -415,8 +430,13 @@ namespace PTC
 
             catch (Exception ex)
             {
+                // 05/29/2021 11:37 am - SSN - [20210528-1458] - [014] - Angular validations - New product
+
                 LastException = ex;
                 Message = "ERROR Saving Product";
+
+                Messages.AddModelError("", ex.Message);
+
             }
         }
         #endregion

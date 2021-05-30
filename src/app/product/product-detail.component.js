@@ -24,6 +24,7 @@ var ProductDetailComponent = /** @class */ (function () {
         this.activatedRoute = activatedRoute;
         this.messages = [];
         this.categories = [];
+        this.mouseOverSave = false;
     }
     ProductDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -34,21 +35,19 @@ var ProductDetailComponent = /** @class */ (function () {
             }
             else {
                 _this.product = new product_1.Product();
-                _this.product.price = 0;
-                _this.product.categoryId = 0;
-                _this.product.url = "http://www.fairwaytech.com";
+                _this.product.categoryId = "";
             }
         });
         this.getCategories();
     };
     ProductDetailComponent.prototype.getCategories = function () {
         var _this = this;
-        this.categoryService.getCategories().subscribe(function (categories) { return _this.categories = categories; }, function (errors) { return _this.handleErrors(errors); });
+        this.categoryService.getCategories().subscribe(function (categories) { return _this.categories = categories.slice(1, categories.length); }, function (errors) { return _this.handleErrors(errors); });
     };
     ProductDetailComponent.prototype.goBack = function () {
         this.location.back();
     };
-    ProductDetailComponent.prototype.updateProduct = function (product) {
+    ProductDetailComponent.prototype.updateProduct = function (product, formObj) {
         var _this = this;
         this.productService.updateProduct(product).subscribe(function () {
             _this.goBack();
@@ -58,36 +57,57 @@ var ProductDetailComponent = /** @class */ (function () {
             toastr.error('Failed to update record');
         });
     };
-    ProductDetailComponent.prototype.addProduct = function (product) {
+    ProductDetailComponent.prototype.addProduct = function (product, formObj) {
         var _this = this;
+        // To trigger showing db errors.
+        this.setMouseOverSave(false);
         this.productService.addProduct(product).subscribe(function () {
             _this.goBack();
             toastr.success('Record was added');
         }, function (errors) {
             _this.handleErrors(errors);
             toastr.error('Failed to update record');
+            formObj.updateValueAndValidity();
+            // To trigger showing db errors.
+            _this.setMouseOverSave(true);
         });
     };
-    ProductDetailComponent.prototype.saveProduct = function () {
+    ProductDetailComponent.prototype.saveProduct = function (formObj) {
         if (this.product) {
             if (this.product.productId) {
-                this.updateProduct(this.product);
+                this.updateProduct(this.product, formObj);
             }
             else {
-                this.addProduct(this.product);
+                this.addProduct(this.product, formObj);
             }
         }
     };
     ProductDetailComponent.prototype.handleErrors = function (errors) {
-        this.messages = [];
+        // this.messages = this.messages.slice(this.messages.length-1,0);
+        this.messages = this.messages.slice(0, 0);
         for (var _i = 0, errors_1 = errors; _i < errors_1.length; _i++) {
             var msg = errors_1[_i];
             this.messages.push(msg);
         }
     };
+    // 05/29/2021 12:20 am - SSN - [20210528-1458] - [005] - Angular validations - New product
+    ProductDetailComponent.prototype.setMouseOverSave = function (setting) {
+        //if (setting== null) {
+        //    this.mouseOverSave = false;
+        //    return;
+        //}
+        if (setting == true && setting != this.mouseOverSave) {
+            this.mouseOverSave = setting;
+        }
+        //if (setting == false && setting != this.mouseOverSave) {
+        //    setTimeout(() => {
+        //        this.mouseOverSave = false;
+        //    }, 5000);
+        //}
+    };
     ProductDetailComponent = __decorate([
         core_1.Component({
-            templateUrl: './product-detail.component.html'
+            templateUrl: './product-detail.component.html?v=4'
         }),
         __metadata("design:paramtypes", [category_service_1.CategoryService, common_1.Location, product_service_1.ProductService, router_1.ActivatedRoute])
     ], ProductDetailComponent);

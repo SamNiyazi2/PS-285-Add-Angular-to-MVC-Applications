@@ -10,7 +10,7 @@ export class Product {
     introductionDate: Date;
     price: number;
     url: string;
-    categoryId: number;
+    categoryId: number|string; // For dropdown hint option
     timestamp:string
 
 }

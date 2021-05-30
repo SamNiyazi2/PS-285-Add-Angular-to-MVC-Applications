@@ -18,6 +18,7 @@ require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 require("rxjs/add/observable/throw");
 var index_1 = require("../errorMessages/index");
+var errorMessage_model_1 = require("../errorMessages/errorMessage.model");
 var ProductService = /** @class */ (function () {
     function ProductService(http) {
         this.http = http;
@@ -53,10 +54,13 @@ var ProductService = /** @class */ (function () {
     };
     ProductService.prototype.handleErrors = function (error) {
         var errors = [];
+        errorMessage_model_1.ccl('handleRrros-product-service - 20210530-1430 [' + error.status + ']');
         switch (error.status) {
             case 400:
+                errorMessage_model_1.ccl('handleRrros-product-service - 20210530-1430  - 400');
                 var err = error.json();
                 if (err.modelState) {
+                    errorMessage_model_1.ccl('handleRrros-product-service - 20210530-1431 - err.modelState');
                     var valErrors1 = err.modelState;
                     for (var key in valErrors1) {
                         for (var i = 0; i < valErrors1[key].length; i++) {
@@ -64,7 +68,9 @@ var ProductService = /** @class */ (function () {
                         }
                     }
                 }
-                else if (err.message) {
+                else
+                    errorMessage_model_1.ccl('handleRrros-product-service - 20210530-1432 - NOT err.modelState');
+                if (err.message) {
                     errors.push(index_1.createErrorMessage('', '[err-ssn-20210309-1934-A]: ' + err.message));
                 }
                 else {

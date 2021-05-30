@@ -15,6 +15,7 @@ import 'rxjs/add/observable/throw';
 import { Product } from './product';
 import { ProductSearch } from './productSearch';
 import { IErrorMessage, createErrorMessage } from '../errorMessages/index';
+import { ccl } from '../errorMessages/errorMessage.model';
 
 @Injectable()
 export class ProductService {
@@ -86,14 +87,21 @@ export class ProductService {
 
         let errors: IErrorMessage[] = [];
 
+        ccl('handleRrros-product-service - 20210530-1430 [' + error.status + ']');
+
 
         switch (error.status) {
 
 
             case 400:
-                let err = error.json();
+
+        ccl('handleRrros-product-service - 20210530-1430  - 400');
+
+        let err = error.json();
 
                 if (err.modelState) {
+
+                    ccl('handleRrros-product-service - 20210530-1431 - err.modelState');
 
                     let valErrors1 = err.modelState;
 
@@ -105,8 +113,12 @@ export class ProductService {
 
 
                 } else
+
+                    ccl('handleRrros-product-service - 20210530-1432 - NOT err.modelState');
+
                     if (err.message) {
-                        errors.push(createErrorMessage( '',  '[err-ssn-20210309-1934-A]: ' + err.message ));
+
+                        errors.push(createErrorMessage('', '[err-ssn-20210309-1934-A]: ' + err.message));
                     }
                     else {
                         error.push(createErrorMessage('', '[err-ssn-20210309-1934-B]: ' + 'An Unknown error occurred.'));

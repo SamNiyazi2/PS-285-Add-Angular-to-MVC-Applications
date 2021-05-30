@@ -1,9 +1,10 @@
-﻿<div class="row" *ngIf="applicableErrorMessage  && applicableErrorMessage .length">
-    <div class="col-xs-12">
-        <div class="alert alert-warning alert-short">
+﻿<!--<div class="row" *ngIf="applicableErrorMessage  && applicableErrorMessage .length">-->
+
+<div class="row" [ngClass]="{delayedDisplay:applicableErrorMessage  && applicableErrorMessage.length,cssHidden:!(applicableErrorMessage  && applicableErrorMessage.length)}">
+    <div class="col-xs-12 cssErrorMessages">
+        <!--alert alert-warning alert-short-->
             <ul>
                 <li *ngFor="let msg of applicableErrorMessage ">{{msg.msg}}</li>
             </ul>
-        </div>
     </div>
 </div>

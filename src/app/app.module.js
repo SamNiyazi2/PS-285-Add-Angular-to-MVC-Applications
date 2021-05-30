@@ -37,7 +37,8 @@ var AppModule = /** @class */ (function () {
                 index_2.ErrorMessagesDisplayComponent,
                 index_3.NotLowerCaseValidatorDirective,
                 index_3.MinValidatorDirective,
-                index_3.MaxValidatorDirective
+                index_3.MaxValidatorDirective,
+                index_3.ErrorcheckerValidatorDirective
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: [

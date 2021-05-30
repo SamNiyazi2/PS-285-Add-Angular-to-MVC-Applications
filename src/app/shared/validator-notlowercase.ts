@@ -4,6 +4,7 @@
 
 import { Directive, forwardRef } from "@angular/core";
 import { AbstractControl, ValidatorFn, NG_VALIDATORS, Validator, ValidationErrors } from "@angular/forms";
+import { ccl } from "../errorMessages/errorMessage.model";
 
 
 function notLowerCaseValidate(c: AbstractControl): ValidatorFn {
@@ -11,10 +12,9 @@ function notLowerCaseValidate(c: AbstractControl): ValidatorFn {
     let result: any = null;
     
     const value = c.value;
-
+    
     if (value) {
-
-        
+         
         if (value.toString().trim().length > 1 && value.toString().trim() === value.toString().toLowerCase().trim()) {
             
             result = { validateNotLowercase: { value } };
@@ -37,12 +37,12 @@ function notLowerCaseValidate(c: AbstractControl): ValidatorFn {
 export class NotLowerCaseValidatorDirective implements Validator {
     private validator: ValidatorFn;
 
-
+    
 
     constructor() {
 
         this.validator = notLowerCaseValidate;
-    }
+     }
 
     // ValidationErrors  =??? { [key:string]: any }
     validate(c: AbstractControl): ValidationErrors {

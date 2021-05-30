@@ -19,7 +19,8 @@ import { ErrorMessagesDisplayComponent } from './errorMessages/index';
 import {
     NotLowerCaseValidatorDirective,
     MinValidatorDirective,
-    MaxValidatorDirective
+    MaxValidatorDirective,
+    ErrorcheckerValidatorDirective
 } from './shared/index';
 
 
@@ -35,7 +36,8 @@ import {
         ErrorMessagesDisplayComponent,
         NotLowerCaseValidatorDirective,
         MinValidatorDirective,
-        MaxValidatorDirective
+        MaxValidatorDirective,
+        ErrorcheckerValidatorDirective  
     ],
 
     bootstrap: [AppComponent],

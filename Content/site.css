@@ -28,3 +28,32 @@ textarea {
     color:palevioletred;
     background-color:lightgoldenrodyellow;
 }
+
+
+
+
+
+
+
+
+.cssErrorMessages{
+    color:red;
+    background-color:lightgoldenrodyellow;
+}
+
+/*.delayedDisplay {
+    opacity: 1;
+    height: 40px; 
+     transition: opacity 2s linear, height 1s linear; 
+  
+}
+
+
+.cssHidden {
+     opacity: 0;
+    height: 0px; 
+     transition: opacity 2s linear, height 1s linear; 
+   
+}*/
+
+ 
