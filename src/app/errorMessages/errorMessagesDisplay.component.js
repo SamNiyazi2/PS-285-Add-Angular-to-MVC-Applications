@@ -69,7 +69,7 @@ var ErrorMessagesDisplayComponent = /** @class */ (function () {
     ErrorMessagesDisplayComponent = __decorate([
         core_1.Component({
             selector: 'error-messages-display',
-            templateUrl: './errorMessagesDisplay.component.html?v=7'
+            templateUrl: './errorMessagesDisplay.component.html'
         })
     ], ErrorMessagesDisplayComponent);
     return ErrorMessagesDisplayComponent;

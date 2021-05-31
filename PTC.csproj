@@ -183,6 +183,13 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="dist\favicon.ico" />
+    <Content Include="dist\index.html" />
+    <Content Include="dist\inline.bundle.js" />
+    <Content Include="dist\main.bundle.js" />
+    <Content Include="dist\polyfills.bundle.js" />
+    <Content Include="dist\styles.bundle.js" />
+    <Content Include="dist\vendor.bundle.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -193,6 +200,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="package.json" />
+    <Content Include="dist\inline.bundle.js.map" />
+    <Content Include="dist\main.bundle.js.map" />
+    <Content Include="dist\polyfills.bundle.js.map" />
+    <Content Include="dist\styles.bundle.js.map" />
+    <Content Include="dist\vendor.bundle.js.map" />
+    <None Include="Properties\PublishProfiles\PS-285-Add-Angular-to-MVC-Applications - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -209,6 +222,7 @@
     <Content Include="src\app\product\product-detail.component.html" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\index.html" />
+    <Content Include="src\ssn_notes.txt" />
     <Content Include="src\styles.css" />
     <Content Include="src\systemjs-angular-loader.js" />
     <Content Include="src\systemjs.config.extras.js" />
@@ -231,7 +245,6 @@
     <Content Include="Views\Product\_ProductDetail.cshtml" />
     <Content Include="Views\Product\_ProductList.cshtml" />
     <Content Include="tslint.json" />
-    <Content Include="Views\Product\product_ang.cshtml" />
     <Content Include="src\app\product\product-list.component.html" />
     <Content Include="tsconfig.json" />
     <Content Include="Views\src\product_ang.cshtml" />

@@ -1,0 +1,6 @@
+﻿
+7:10 PM 5/30/2021 - SSN
+
+ng build for Azure
+
+ng build -prod will not work since files are suffixed with random characters.

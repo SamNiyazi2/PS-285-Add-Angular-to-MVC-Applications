@@ -20,7 +20,7 @@ namespace PTC
             bundles.Add(new ScriptBundle("~/bundles/validators").Include(
             "~/Scripts/jquery.validate.js",
             "~/Scripts/jquery.validate.unobtrusive.js"));
-  
+
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
@@ -39,6 +39,26 @@ namespace PTC
                 "~/Content/site.css",
                 "~/src/styles.css",
                 "~/node_modules/toastr/build/toastr.min.css"));
+
+
+            // 05/30/2021 05:01 pm - SSN - [20210530-1701] - [001] - Deploy to Azure 
+
+            bundles.Add(new ScriptBundle("~/bundles/angular_dev").Include(
+                "~/node_modules/core-js/client/shim.min.js",
+                "~/node_modules/zone.js/dist/zone.js",
+                "~/node_modules/systemjs/dist/system.src.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angular_prod").Include(
+                "~/dist/inline.bundle.js",
+                "~/dist/polyfills.bundle.js",
+                "~/dist/styles.bundle.js",
+                "~/dist/vendor.bundle.js",
+                "~/dist/main.bundle.js"));
+
+
+
+
         }
     }
+
 }

@@ -107,7 +107,7 @@ var ProductDetailComponent = /** @class */ (function () {
     };
     ProductDetailComponent = __decorate([
         core_1.Component({
-            templateUrl: './product-detail.component.html?v=4'
+            templateUrl: './product-detail.component.html'
         }),
         __metadata("design:paramtypes", [category_service_1.CategoryService, common_1.Location, product_service_1.ProductService, router_1.ActivatedRoute])
     ], ProductDetailComponent);

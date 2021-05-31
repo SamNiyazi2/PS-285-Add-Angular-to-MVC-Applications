@@ -17,7 +17,7 @@ declare let toastr: any;
 
 @Component({
 
-    templateUrl: './product-detail.component.html?v=4'
+    templateUrl: './product-detail.component.html'
 })
 export class ProductDetailComponent implements OnInit {
 
