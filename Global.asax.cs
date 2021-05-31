@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Formatting;
+using System.Reflection;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -13,8 +14,12 @@ namespace PTC
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+        public static string APPLICATION_VERSION_NO;
+
         protected void Application_Start()
         {
+            APPLICATION_VERSION_NO = Assembly.GetExecutingAssembly().GetName().Version.ToString(4);
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 

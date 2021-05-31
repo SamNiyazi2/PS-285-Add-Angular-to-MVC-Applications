@@ -28,11 +28,14 @@
                 </button>
                 @Html.ActionLink("Paul's Training Company", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
+            <div style="float:right;font-size:9px;color:white;" class="cssVersion" >
+                 v @MvcApplication.APPLICATION_VERSION_NO
+            </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home", null, new { target = "home" })</li>
-                    <li>@Html.ActionLink("Products (MVC)", "Product", "Product",null, new { target = "_mvc_product" })</li>
-                    <li><a href="~/src/product_ang" target = "_ang_product">Products (Angular)</a></li>
+                    <li>@Html.ActionLink("Products (MVC)", "Product", "Product", null, new { target = "_mvc_product" })</li>
+                    <li><a href="~/src/product_ang" target="_ang_product">Products (Angular)</a></li>
 
                 </ul>
             </div>
