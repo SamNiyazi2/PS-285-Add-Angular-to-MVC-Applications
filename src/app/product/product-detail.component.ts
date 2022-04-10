@@ -5,13 +5,15 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
 
+import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
+
 import { Product } from './product';
 import { Category } from '../category/category';
 import { ProductService } from './product.service';
 import { CategoryService } from '../category/category.service';
 import { IErrorMessage } from '../errorMessages/index';
 import { ccl } from '../errorMessages/errorMessage.model';
-import { FormControl } from '@angular/forms';
 
 declare let toastr: any;
 
@@ -28,7 +30,7 @@ export class ProductDetailComponent implements OnInit {
 
     mouseOverSave = false;
 
-    constructor(private categoryService: CategoryService, private location: Location, private productService: ProductService, private activatedRoute: ActivatedRoute) {
+    constructor(private categoryService: CategoryService, private location: Location, private productService: ProductService, private activatedRoute: ActivatedRoute, private router:Router) {
 
     }
 
@@ -64,7 +66,10 @@ export class ProductDetailComponent implements OnInit {
 
     goBack() {
 
-        this.location.back();
+        // 04/10/2022 06:39 am - SSN - use router
+        // this.location.back();
+        this.router.navigate(['product_ang']);
+
     }
 
     

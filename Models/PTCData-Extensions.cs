@@ -85,7 +85,8 @@ namespace PTC.Models
 
 
                 // Check IntroductionDate field
-                if (entity.IntroductionDate < DateTime.Now.AddYears(-5))
+                // 04/10/2022 06:12 am - SSN - For new items only
+                if (entity.IntroductionDate < DateTime.Now.AddYears(-5) && entity.ProductId == 0)
                 {
                     list.Add(new DbValidationError("IntroductionDate",
                       "Introduction date must be within the last five years."));
@@ -119,7 +120,7 @@ namespace PTC.Models
             }
             catch (Exception ex)
             {
-                list.Add(new DbValidationError("",$"[ssn-20210529-1153] [{ex.Message}"));
+                list.Add(new DbValidationError("", $"[ssn-20210529-1153] [{ex.Message}"));
             }
 
             return list;

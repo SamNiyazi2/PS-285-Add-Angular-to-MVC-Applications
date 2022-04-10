@@ -541,15 +541,17 @@ exports.ProductDetailComponent = void 0;
 var core_1 = __webpack_require__("../../../core/@angular/core.es5.js");
 var common_1 = __webpack_require__("../../../common/@angular/common.es5.js");
 var router_1 = __webpack_require__("../../../router/@angular/router.es5.js");
+var router_2 = __webpack_require__("../../../router/@angular/router.es5.js");
 var product_1 = __webpack_require__("../../../../../src/app/product/product.ts");
 var product_service_1 = __webpack_require__("../../../../../src/app/product/product.service.ts");
 var category_service_1 = __webpack_require__("../../../../../src/app/category/category.service.ts");
 var ProductDetailComponent = /** @class */ (function () {
-    function ProductDetailComponent(categoryService, location, productService, activatedRoute) {
+    function ProductDetailComponent(categoryService, location, productService, activatedRoute, router) {
         this.categoryService = categoryService;
         this.location = location;
         this.productService = productService;
         this.activatedRoute = activatedRoute;
+        this.router = router;
         this.messages = [];
         this.categories = [];
         this.mouseOverSave = false;
@@ -573,7 +575,9 @@ var ProductDetailComponent = /** @class */ (function () {
         this.categoryService.getCategories().subscribe(function (categories) { return _this.categories = categories.slice(1, categories.length); }, function (errors) { return _this.handleErrors(errors); });
     };
     ProductDetailComponent.prototype.goBack = function () {
-        this.location.back();
+        // 04/10/2022 06:39 am - SSN - use router
+        // this.location.back();
+        this.router.navigate(['product_ang']);
     };
     ProductDetailComponent.prototype.updateProduct = function (product, formObj) {
         var _this = this;
@@ -633,12 +637,12 @@ var ProductDetailComponent = /** @class */ (function () {
         //    }, 5000);
         //}
     };
-    var _a, _b, _c, _d;
+    var _a, _b, _c, _d, _e;
     ProductDetailComponent = __decorate([
         core_1.Component({
             template: __webpack_require__("../../../../../src/app/product/product-detail.component.html")
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof category_service_1.CategoryService !== "undefined" && category_service_1.CategoryService) === "function" ? _a : Object, typeof (_b = typeof common_1.Location !== "undefined" && common_1.Location) === "function" ? _b : Object, typeof (_c = typeof product_service_1.ProductService !== "undefined" && product_service_1.ProductService) === "function" ? _c : Object, typeof (_d = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" ? _d : Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof category_service_1.CategoryService !== "undefined" && category_service_1.CategoryService) === "function" ? _a : Object, typeof (_b = typeof common_1.Location !== "undefined" && common_1.Location) === "function" ? _b : Object, typeof (_c = typeof product_service_1.ProductService !== "undefined" && product_service_1.ProductService) === "function" ? _c : Object, typeof (_d = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" ? _d : Object, typeof (_e = typeof router_2.Router !== "undefined" && router_2.Router) === "function" ? _e : Object])
     ], ProductDetailComponent);
     return ProductDetailComponent;
 }());

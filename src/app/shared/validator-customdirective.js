@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ErrorcheckerValidatorDirective = exports.errorchecker = void 0;
 var forms_1 = require("@angular/forms");
 var core_1 = require("@angular/core");
 var errorMessage_model_1 = require("../errorMessages/errorMessage.model");

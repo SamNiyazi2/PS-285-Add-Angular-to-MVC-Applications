@@ -10,18 +10,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ProductDetailComponent = void 0;
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var router_1 = require("@angular/router");
+var router_2 = require("@angular/router");
 var product_1 = require("./product");
 var product_service_1 = require("./product.service");
 var category_service_1 = require("../category/category.service");
 var ProductDetailComponent = /** @class */ (function () {
-    function ProductDetailComponent(categoryService, location, productService, activatedRoute) {
+    function ProductDetailComponent(categoryService, location, productService, activatedRoute, router) {
         this.categoryService = categoryService;
         this.location = location;
         this.productService = productService;
         this.activatedRoute = activatedRoute;
+        this.router = router;
         this.messages = [];
         this.categories = [];
         this.mouseOverSave = false;
@@ -45,7 +48,9 @@ var ProductDetailComponent = /** @class */ (function () {
         this.categoryService.getCategories().subscribe(function (categories) { return _this.categories = categories.slice(1, categories.length); }, function (errors) { return _this.handleErrors(errors); });
     };
     ProductDetailComponent.prototype.goBack = function () {
-        this.location.back();
+        // 04/10/2022 06:39 am - SSN - use router
+        // this.location.back();
+        this.router.navigate(['product_ang']);
     };
     ProductDetailComponent.prototype.updateProduct = function (product, formObj) {
         var _this = this;
@@ -109,7 +114,7 @@ var ProductDetailComponent = /** @class */ (function () {
         core_1.Component({
             templateUrl: './product-detail.component.html'
         }),
-        __metadata("design:paramtypes", [category_service_1.CategoryService, common_1.Location, product_service_1.ProductService, router_1.ActivatedRoute])
+        __metadata("design:paramtypes", [category_service_1.CategoryService, common_1.Location, product_service_1.ProductService, router_1.ActivatedRoute, router_2.Router])
     ], ProductDetailComponent);
     return ProductDetailComponent;
 }());
