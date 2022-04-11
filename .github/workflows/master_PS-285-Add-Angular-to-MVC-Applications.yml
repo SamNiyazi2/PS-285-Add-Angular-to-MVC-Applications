@@ -26,7 +26,6 @@ jobs:
     
     - name: create test directory
       run: |
-        mkdir ./published
         mkdir temp20220411
         write-output "test" | Out-File temp20220411/test101.txtt
        
