@@ -31,9 +31,9 @@ jobs:
        
     - name: Test startup dir
       run: |
-         $exclude =  @('windows', 'microsoft', 'az', 'program files', 'inetpub', 'drivers')
+         $exclude =  @('windows', 'microsoft', 'az', 'program files', 'inetpub', 'drivers', 'packages', 'node_modules')
          function excl  ($f) {  -not (  $f -match ( $exclude -join '|' ))  }
-         get-childitem -path "d:\" -recurse -directory -depth 5 | where { excl -f $_.fullname }
+         get-childitem -path "d:\" -recurse -directory| where { excl -f $_.fullname }
 
 
     - name: Setup MSBuild path
@@ -50,7 +50,9 @@ jobs:
 
     - name: Test .net dir
       run: |
-         get-childitem -recurse -directory
+         $exclude =  @('windows', 'microsoft', 'az', 'program files', 'inetpub', 'drivers', 'packages', 'node_modules')
+         function excl  ($f) {  -not (  $f -match ( $exclude -join '|' ))  }
+         get-childitem -path "d:\" -recurse -directory| where { excl -f $_.fullname }
  
     - uses: actions/setup-node@v3
       with:
@@ -66,11 +68,9 @@ jobs:
 
     - name: Test node dir
       run: |
-         get-childitem -recurse -directory
-
-         $exclude =  @('windows', 'microsoft', 'az', 'program files', 'inetpub', 'drivers')
+         $exclude =  @('windows', 'microsoft', 'az', 'program files', 'inetpub', 'drivers', 'packages', 'node_modules')
          function excl  ($f) {  -not (  $f -match ( $exclude -join '|' ))  }
-         get-childitem -path "d:\" -recurse -directory -depth 5 | where { excl -f $_.fullname }
+         get-childitem -path "d:\" -recurse -directory| where { excl -f $_.fullname }
 
 
 
