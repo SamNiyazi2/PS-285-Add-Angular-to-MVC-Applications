@@ -1,8 +1,7 @@
 Initialcode branch from [Plurasight course: Add Angular to MVC Applications](https://app.pluralsight.com/library/courses/mvc-applications-add-angular/description) 
 
-Author: [Paul D. Sheriff](https://www.pluralsight.com/authors/paul-sheriff) 
-
-Demo site: (Site goes to sleep after 20 minutes of inactivity)
+Pluralsight Author: [Paul D. Sheriff](https://www.pluralsight.com/authors/paul-sheriff) 
 
 <a href="https://ps-285-add-angular-to-mvc-applications.azurewebsites.net/" target="_blank">Azure deployed site</a>
 
+[<img src="https://devsitesindex20190127.azurewebsites.net/toi/jobs/1255/totalhours"/>](https://devsitesindex20190127.azurewebsites.net/Jobs/Details?id=1255)
