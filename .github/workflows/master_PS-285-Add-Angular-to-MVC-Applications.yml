@@ -7,7 +7,7 @@ name: Build and deploy ASP app to Azure Web App - PS-285-Add-Angular-to-MVC-Appl
 
 defaults:
   run:
-    working-directory: c:\publish
+    working-directory: ./published
 
 on:
   push:
@@ -26,9 +26,9 @@ jobs:
     
     - name: create test directory
       run: |
-        mkdir c:\publish
+        mkdir ./published
         mkdir temp20220411
-        copy con test >temp20220411\test101.txt
+        write-output "test" | Out-File temp20220411/test101.txtt
        
 
     - name: Setup MSBuild path
