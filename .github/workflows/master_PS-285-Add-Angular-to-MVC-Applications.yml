@@ -25,6 +25,18 @@ jobs:
     - name: Restore NuGet packages
       run: nuget restore
 
+
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
+    - name: npm install
+      run: npm install
+
+    - name: npm run build:prod
+      run: npm run build:prod
+
+
     - name: Publish to folder
       run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
 

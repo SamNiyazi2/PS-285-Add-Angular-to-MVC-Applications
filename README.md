@@ -6,4 +6,4 @@ Pluralsight Author: [Paul D. Sheriff](https://www.pluralsight.com/authors/paul-s
 
 [<img src="https://devsitesindex20190127.azurewebsites.net/toi/jobs/1255/totalhours"/>](https://devsitesindex20190127.azurewebsites.net/Jobs/Details?id=1255)
 
-[![Build and deploy ASP app to Azure Web App - PS-285-Add-Angular-to-MVC-Applications](https://github.com/SamNiyazi2/PS-285-Add-Angular-to-MVC-Applications/actions/workflows/master_PS-285-Add-Angular-to-MVC-Applications.yml/badge.svg)](https://github.com/SamNiyazi2/PS-285-Add-Angular-to-MVC-Applications/actions/workflows/master_PS-285-Add-Angular-to-MVC-Applications.yml)
+[![Build](https://github.com/SamNiyazi2/PS-285-Add-Angular-to-MVC-Applications/actions/workflows/master_PS-285-Add-Angular-to-MVC-Applications.yml/badge.svg)](https://github.com/SamNiyazi2/PS-285-Add-Angular-to-MVC-Applications/actions/workflows/master_PS-285-Add-Angular-to-MVC-Applications.yml)

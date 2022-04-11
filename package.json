@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "QuickStart package.json from the documentation, supplemented with testing support",
   "scripts": {
-    "build": "ng build -watch",
+    "build": "title %scriptKey_20220410_0654% && ng build -watch",
+    "build:prod": "ng build ",
     "build-orig": "tsc -p src/",
-    "build-orig:watch": "title %scriptKey_20220410_0654% && tsc -p src/ -w",
+    "build-orig:watch": "tsc -p src/ -w",
     "build-orig:e2e": "tsc -p e2e/",
     "serve": "lite-server -c=bs-config.json",
     "serve:e2e": "lite-server -c=bs-config.e2e.json",
