@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MaxValidatorDirective = exports.max = void 0;
 var forms_1 = require("@angular/forms");
 var core_1 = require("@angular/core");
 // 03/11/2021 10:30 pm - SSN - [20210311-2229] - [001] - M08-10 - Create the use max validator directive
