@@ -5,9 +5,9 @@ name: Build and deploy ASP app to Azure Web App - PS-285-Add-Angular-to-MVC-Appl
 
 # 04/11/2022 12:56 am - SSN - Add default directory for Angular.  Originally used by msbuild
 
-defaults:
-  run:
-    working-directory: published
+#defaults:
+#  run:
+#    working-directory: published
 
 on:
   push:
