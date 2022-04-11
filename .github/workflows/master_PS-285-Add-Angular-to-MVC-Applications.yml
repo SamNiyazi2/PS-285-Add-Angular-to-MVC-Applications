@@ -24,10 +24,10 @@ jobs:
     - uses: actions/checkout@v2
 
     
-    - name: create test directory
-      run: |
-        mkdir temp20220411
-        write-output "test" | Out-File temp20220411/test101.txtt
+#    - name: create test directory
+#      run: |
+#        mkdir temp20220411
+#        write-output "test" | Out-File temp20220411/test101.txtt
        
 
     - name: Setup MSBuild path
@@ -42,12 +42,20 @@ jobs:
     - name: Publish to folder
       run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder # /p:_PackageTempDir="\published\"
 
+    - name: Test .net dir
+      run: |
+         run get-childitem -recurse
+ 
     - uses: actions/setup-node@v3
       with:
         node-version: '14'
 
     - name: npm install
       run: npm install
+
+    - name: Test node dir
+      run: |
+         run get-childitem -recurse
 
     - name: npm run build:prod
       run: npm run build:prod 
