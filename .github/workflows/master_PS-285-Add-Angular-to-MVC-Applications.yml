@@ -43,7 +43,7 @@ jobs:
       run: nuget restore
 
     - name: Publish to folder
-      run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder # /p:_PackageTempDir="\published\"
+      run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
 
     - name: Test .net dir
       run: |
@@ -64,6 +64,8 @@ jobs:
     - name: Test node dir
       run: |
          get-childitem -recurse -directory
+         get-childitem -path "d:\b" -recurse -directory
+         get-childitem -path "d:\s" -recurse -directory
 
 
     - name: Upload artifact for deployment job
