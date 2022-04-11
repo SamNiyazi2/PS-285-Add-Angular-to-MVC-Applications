@@ -3,12 +3,19 @@
 
 name: Build and deploy ASP app to Azure Web App - PS-285-Add-Angular-to-MVC-Applications
 
+# 04/11/2022 12:56 am - SSN - Add default directory for Angular.  Originally used by msbuild
+
+defaults:
+  run:
+    working-directory: \published\
+
 on:
   push:
     branches:
       - main
   workflow_dispatch:
 
+  
 jobs:
   build:
     runs-on: 'windows-latest'
@@ -26,7 +33,7 @@ jobs:
       run: nuget restore
 
     - name: Publish to folder
-      run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
+      run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder # /p:_PackageTempDir="\published\"
 
     - uses: actions/setup-node@v3
       with:
@@ -38,6 +45,13 @@ jobs:
     - name: npm run build:prod
       run: npm run build:prod
       working-directory: '\published\'
+
+
+    - name: create test directory
+      run: |
+        mkdir temp20220411
+        copy con test >temp20220411\test101.txt
+        
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
