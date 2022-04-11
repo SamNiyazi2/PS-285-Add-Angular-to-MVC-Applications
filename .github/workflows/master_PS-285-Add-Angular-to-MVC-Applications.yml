@@ -31,7 +31,7 @@ jobs:
        
     - name: Test startup dir
       run: |
-         get-childitem -Path $sourceDir |  do-archive-package 
+         get-childitem -recurse -directory
 
     - name: Setup MSBuild path
       uses: microsoft/setup-msbuild@v1.0.2
@@ -47,7 +47,7 @@ jobs:
 
     - name: Test .net dir
       run: |
-         get-childitem -Path $sourceDir |  do-archive-package 
+         get-childitem -recurse -directory
  
     - uses: actions/setup-node@v3
       with:
@@ -63,7 +63,7 @@ jobs:
 
     - name: Test node dir
       run: |
-         get-childitem -Path $sourceDir |  do-archive-package 
+         get-childitem -recurse -directory
 
 
     - name: Upload artifact for deployment job
