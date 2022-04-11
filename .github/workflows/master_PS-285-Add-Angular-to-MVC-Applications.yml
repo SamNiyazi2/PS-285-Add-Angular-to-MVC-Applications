@@ -25,6 +25,8 @@ jobs:
     - name: Restore NuGet packages
       run: nuget restore
 
+    - name: Publish to folder
+      run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
 
     - uses: actions/setup-node@v3
       with:
@@ -35,10 +37,7 @@ jobs:
 
     - name: npm run build:prod
       run: npm run build:prod
-      working-directory: '/published'
-
-    - name: Publish to folder
-      run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
+      working-directory: '.\published\'
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
