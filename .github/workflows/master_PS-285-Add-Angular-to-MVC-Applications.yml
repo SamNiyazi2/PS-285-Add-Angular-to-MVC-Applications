@@ -31,7 +31,10 @@ jobs:
        
     - name: Test startup dir
       run: |
-         get-childitem -recurse -directory
+         $exclude =  @('windows', 'microsoft', 'az', 'program files', 'inetpub', 'drivers')
+         function excl  ($f) {  -not (  $f -match ( $exclude -join '|' ))  }
+         get-childitem -path "d:\" -recurse -directory -depth 5 | where { excl -f $_.fullname }
+
 
     - name: Setup MSBuild path
       uses: microsoft/setup-msbuild@v1.0.2
@@ -64,8 +67,11 @@ jobs:
     - name: Test node dir
       run: |
          get-childitem -recurse -directory
-         get-childitem -path "d:\b" -recurse -directory
-         get-childitem -path "d:\s" -recurse -directory
+
+         $exclude =  @('windows', 'microsoft', 'az', 'program files', 'inetpub', 'drivers')
+         function excl  ($f) {  -not (  $f -match ( $exclude -join '|' ))  }
+         get-childitem -path "d:\" -recurse -directory -depth 5 | where { excl -f $_.fullname }
+
 
 
     - name: Upload artifact for deployment job
