@@ -23,6 +23,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    
+    - name: create test directory
+      run: |
+        mkdir temp20220411
+        copy con test >temp20220411\test101.txt
+        
+
     - name: Setup MSBuild path
       uses: microsoft/setup-msbuild@v1.0.2
 
@@ -46,12 +53,6 @@ jobs:
       run: npm run build:prod
       working-directory: '\published\'
 
-
-    - name: create test directory
-      run: |
-        mkdir temp20220411
-        copy con test >temp20220411\test101.txt
-        
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
