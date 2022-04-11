@@ -29,6 +29,9 @@ jobs:
 #        mkdir temp20220411
 #        write-output "test" | Out-File temp20220411/test101.txtt
        
+    - name: Test startup dir
+      run: |
+         get-childitem -recurse
 
     - name: Setup MSBuild path
       uses: microsoft/setup-msbuild@v1.0.2
@@ -44,7 +47,7 @@ jobs:
 
     - name: Test .net dir
       run: |
-         run get-childitem -recurse
+         get-childitem -recurse
  
     - uses: actions/setup-node@v3
       with:
@@ -55,7 +58,7 @@ jobs:
 
     - name: Test node dir
       run: |
-         run get-childitem -recurse
+         get-childitem -recurse
 
     - name: npm run build:prod
       run: npm run build:prod 
