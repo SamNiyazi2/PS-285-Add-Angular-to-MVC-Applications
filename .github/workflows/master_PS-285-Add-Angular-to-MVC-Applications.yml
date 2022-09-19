@@ -48,7 +48,7 @@ jobs:
     - name: Publish to folder
 # 09/19/2022 04:55 am - SSN - Containerized app.  docker-compose.dcproj.  Specify ptc.csproj. 
 #      run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
-      run: ptc.csproj -property:Configuration=Release msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\" 
+      run: msbuild ptc.csproj -property:Configuration=Release  /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\" 
 
     - name: Test .net dir
       run: |
