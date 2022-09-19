@@ -41,6 +41,10 @@
             </div>
         </div>
     </div>
+    @{ 
+        string containerName = Environment.GetEnvironmentVariable("ps285ContainerName");
+    }
+    <p>Container: [@containerName]</p>
     <div class="container body-content">
         @RenderBody()
     </div>

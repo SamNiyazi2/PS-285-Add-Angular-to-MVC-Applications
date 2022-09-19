@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+ 
+  ptc:
+    environment:
+     ps285ContainerName: "DockerFile-ps-285-20220918-0757"
+    image: ${DOCKER_REGISTRY-}ptc
+    build:
+      context: .
+      dockerfile: Dockerfile

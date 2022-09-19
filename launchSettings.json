@@ -1,0 +1,21 @@
+{
+  "profiles": {
+    "Docker Compose for Release": {
+      "commandName": "DockerCompose",
+      "serviceActions": {
+        "ptc": "StartWithoutDebugging"
+      },
+      "commandVersion": "1.0"
+    },
+    "Docker Compose for Debug": {
+      "commandName": "DockerCompose",
+      "composeLaunchServiceName": "ptc",
+      "serviceActions": {
+        "ptc": "StartDebugging"
+      },
+      "composeLaunchAction": "LaunchBrowser",
+      "commandVersion": "1.0",
+      "composeLaunchUrl": "http://{ServiceIPAddress}"
+    }
+  }
+}
