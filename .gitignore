@@ -265,3 +265,4 @@ __pycache__/
 /Web.*.config
 
 web_*.config
+/.angular/cache/14.2.8

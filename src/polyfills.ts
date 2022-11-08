@@ -53,7 +53,11 @@ import 'core-js/es7/reflect';
 /***************************************************************************************************
  * Zone JS is required by Angular itself.
  */
-import 'zone.js/dist/zone';  // Included with Angular CLI.
+// 
+
+// 11/08/2022 02:16 pm - SSN - Upgrading Angular. (Triggered by depedabot and it snowballed.)
+// import 'zone.js/dist/zone';  // Included with Angular CLI.
+import 'zone.js/';  
 
 
 

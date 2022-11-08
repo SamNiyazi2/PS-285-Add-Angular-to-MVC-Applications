@@ -11,7 +11,9 @@ import { CategoryService } from '../category/category.service';
 import { Category } from '../category/category';
 import { ProductSearch } from './productSearch';
 import { Router } from '@angular/router';
-import { indexDebugNode } from '@angular/core/src/debug/debug_node';
+
+// 11/08/2022 03:10 pm - SSN - [20221108-1436] - [002] - Upgrading Angular - Fix impact
+/*import { indexDebugNode } from '@angular/core/src/debug/debug_node';*/
 
 
 declare let toastr: any;

@@ -180,13 +180,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="dist\favicon.ico" />
-    <Content Include="dist\index.html" />
-    <Content Include="dist\inline.bundle.js" />
-    <Content Include="dist\main.bundle.js" />
-    <Content Include="dist\polyfills.bundle.js" />
-    <Content Include="dist\styles.bundle.js" />
-    <Content Include="dist\vendor.bundle.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -200,11 +193,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="dist\inline.bundle.js.map" />
-    <Content Include="dist\main.bundle.js.map" />
-    <Content Include="dist\polyfills.bundle.js.map" />
-    <Content Include="dist\styles.bundle.js.map" />
-    <Content Include="dist\vendor.bundle.js.map" />
     <None Include="Dockerfile" />
     <None Include=".dockerignore">
       <DependentUpon>Dockerfile</DependentUpon>
@@ -230,9 +218,6 @@
     <Content Include="src\index.html" />
     <Content Include="src\ssn_notes.txt" />
     <Content Include="src\styles.css" />
-    <Content Include="src\systemjs-angular-loader.js" />
-    <Content Include="src\systemjs.config.extras.js" />
-    <Content Include="src\systemjs.config.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -244,9 +229,7 @@
     <Content Include="Views\Product\Product.cshtml" />
     <Content Include="Views\Product\_ProductDetail.cshtml" />
     <Content Include="Views\Product\_ProductList.cshtml" />
-    <Content Include="tslint.json" />
     <Content Include="src\app\product\product-list.component.html" />
-    <Content Include="tsconfig.json" />
     <Content Include="Views\src\product_ang.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
