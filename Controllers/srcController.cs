@@ -1,8 +1,6 @@
-﻿using PTC.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿
+using System.IO;
+using System.Reflection;
 using System.Web.Mvc;
 
 namespace PTC.Controllers
@@ -18,13 +16,20 @@ namespace PTC.Controllers
             return RedirectToAction("product_ang");
         }
 
-       
+
 
         public ActionResult product_ang()
         {
 
             AngularSrcModel mv = new AngularSrcModel();
-            mv.THeStartupScripts = "Te scripts-20221108-2002";
+
+            SSN_Angular_Script_Util_Framework.Angular_Scripts_loader_v02.Angular_runtime_script_dir = "\\dist";
+            SSN_Angular_Script_Util_Framework.Angular_Scripts_loader_v02.Angular_runtime_script_dir_relative = "/dist/";
+            SSN_Angular_Script_Util_Framework.Angular_Scripts_loader_v02.Angular_runtime_build_index_file = "dist\\index.html";
+            SSN_Angular_Script_Util_Framework.Angular_Scripts_loader_v02.LoadScripts();
+
+            mv.TheStartupScripts = SSN_Angular_Script_Util_Framework.Angular_Scripts_loader_v02.getScripts();
+
             return View(mv);
         }
 

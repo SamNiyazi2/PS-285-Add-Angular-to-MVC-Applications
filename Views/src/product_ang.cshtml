@@ -3,8 +3,6 @@
     ViewBag.Title = "Products (Angular)";
 }
 <div class="row">
-    <h1>tesst-20221108-1953</h1>
-    <h1>[@Model.THeStartupScripts]</h1>
     <div class="col-xs-12">
         <ptc-app>
             Loading product application...
@@ -17,9 +15,17 @@
 @section scripts {
 
 
-    <h4>angular-scripts-20220811-2023-begin</h4>
-    @Scripts.Render("~/bundles/angular_prod")
-    <h4>angular-scripts-20220811-2023-end</h4>
+    @*
+        // 11/09/2022 09:01 am - SSN - Replaced with Angular upgrade
+
+        <h4>angular-scripts-20220811-2023-begin</h4>
+        @Scripts.Render("~/bundles/angular_prod")
+        <h4>angular-scripts-20220811-2023-end</h4>
+
+    *@
+
+    @Html.Raw(Model.TheStartupScripts)
+
 
     @*<script src="/src/systemjs.config.js"></script>
         <script>System.import('/src/main.js').catch(function (err) { console.error(err); });</script>*@

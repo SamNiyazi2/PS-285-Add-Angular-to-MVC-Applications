@@ -48,12 +48,14 @@ namespace PTC
             //    "~/node_modules/zone.js/dist/zone.js",
             //    "~/node_modules/systemjs/dist/system.src.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/angular_prod").Include(
-                "~/dist/inline.bundle.js",
-                "~/dist/polyfills.bundle.js",
-                "~/dist/styles.bundle.js",
-                "~/dist/vendor.bundle.js",
-                "~/dist/main.bundle.js"));
+
+            // 11/09/2022 08:57 am - SSN - Angular no longer uses this file name convention.
+            //bundles.Add(new ScriptBundle("~/bundles/angular_prod").Include(
+            //    "~/dist/inline.bundle.js",
+            //    "~/dist/polyfills.bundle.js",
+            //    "~/dist/styles.bundle.js",
+            //    "~/dist/vendor.bundle.js",
+            //    "~/dist/main.bundle.js"));
 
 
 

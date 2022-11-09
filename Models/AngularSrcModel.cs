@@ -9,6 +9,6 @@ namespace PTC
 {
     public class AngularSrcModel
     {
-        public string THeStartupScripts { get; set; }
+        public string TheStartupScripts { get; set; }
     }
 }
