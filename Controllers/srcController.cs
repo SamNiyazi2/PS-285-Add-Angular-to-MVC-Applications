@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PTC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,9 +18,14 @@ namespace PTC.Controllers
             return RedirectToAction("product_ang");
         }
 
+       
+
         public ActionResult product_ang()
         {
-            return View();
+
+            AngularSrcModel mv = new AngularSrcModel();
+            mv.THeStartupScripts = "Te scripts-20221108-2002";
+            return View(mv);
         }
 
 

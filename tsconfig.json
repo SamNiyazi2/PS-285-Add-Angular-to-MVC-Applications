@@ -9,7 +9,7 @@
 
 
     "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
+    "outDir": "./dist",
     "forceConsistentCasingInFileNames": true,
     "strict": false, //TS2322: 
     "noImplicitReturns": true,

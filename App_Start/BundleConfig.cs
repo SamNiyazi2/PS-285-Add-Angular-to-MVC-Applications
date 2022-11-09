@@ -42,11 +42,11 @@ namespace PTC
 
 
             // 05/30/2021 05:01 pm - SSN - [20210530-1701] - [001] - Deploy to Azure 
-
-            bundles.Add(new ScriptBundle("~/bundles/angular_dev").Include(
-                "~/node_modules/core-js/client/shim.min.js",
-                "~/node_modules/zone.js/dist/zone.js",
-                "~/node_modules/systemjs/dist/system.src.js"));
+            // 11/08/2022 07:25 pm - SSN - Not in use.
+            //bundles.Add(new ScriptBundle("~/bundles/angular_dev").Include(
+            //    "~/node_modules/core-js/client/shim.min.js",
+            //    "~/node_modules/zone.js/dist/zone.js",
+            //    "~/node_modules/systemjs/dist/system.src.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular_prod").Include(
                 "~/dist/inline.bundle.js",
