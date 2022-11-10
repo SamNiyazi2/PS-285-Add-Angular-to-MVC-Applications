@@ -9,7 +9,7 @@
 
 
     "baseUrl": "./",
-    "outDir": "./dist",
+    "outDir": "./dist_1109",
     "forceConsistentCasingInFileNames": true,
     "strict": false, //TS2322: 
     "noImplicitReturns": true,

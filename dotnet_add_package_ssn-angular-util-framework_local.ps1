@@ -17,10 +17,7 @@ $projectName = "$psscriptroot\PTC.csproj"
 
 $packageName = "SSN_Angular_Script_Util_Framework"
 
-
-write-host "testing-20221109-1152-B " -foregroundcolor blue 
-
- add-nugetPackage -projectName $projectName -packageName $packageName
+add-nugetPackage -projectName $projectName -packageName $packageName
 
   
 

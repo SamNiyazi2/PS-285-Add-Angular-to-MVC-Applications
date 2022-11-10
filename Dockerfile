@@ -5,6 +5,6 @@ FROM mcr.microsoft.com/dotnet/framework/aspnet:4.8-windowsservercore-ltsc2019
 ARG source
 WORKDIR /inetpub/wwwroot
 
-COPY dist ./dist
+COPY dist_1109 ./dist_1109
 
 COPY ${source:-obj/Docker/publish} . 

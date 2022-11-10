@@ -23,9 +23,9 @@ namespace PTC.Controllers
 
             AngularSrcModel mv = new AngularSrcModel();
 
-            SSN_Angular_Script_Util_Framework.Angular_Scripts_loader_v02.Angular_runtime_script_dir = "\\dist";
-            SSN_Angular_Script_Util_Framework.Angular_Scripts_loader_v02.Angular_runtime_script_dir_relative = "/dist/";
-            SSN_Angular_Script_Util_Framework.Angular_Scripts_loader_v02.Angular_runtime_build_index_file = "dist\\index.html";
+            SSN_Angular_Script_Util_Framework.Angular_Scripts_loader_v02.Angular_runtime_script_dir = "\\dist_1109";
+            SSN_Angular_Script_Util_Framework.Angular_Scripts_loader_v02.Angular_runtime_script_dir_relative = "/dist_1109/";
+            SSN_Angular_Script_Util_Framework.Angular_Scripts_loader_v02.Angular_runtime_build_index_file = "dist_1109\\index.html";
             SSN_Angular_Script_Util_Framework.Angular_Scripts_loader_v02.LoadScripts();
 
             mv.TheStartupScripts = SSN_Angular_Script_Util_Framework.Angular_Scripts_loader_v02.getScripts();
