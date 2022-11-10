@@ -57,7 +57,7 @@ jobs:
     - name: npm run build:prod
       run: |
         npm run build:prod 
-        xcopy dist\*.* \published\dist\*.*
+        xcopy dist_1109\*.* \published\dist_1109\*.*
 
 
     - name: Test node dir
