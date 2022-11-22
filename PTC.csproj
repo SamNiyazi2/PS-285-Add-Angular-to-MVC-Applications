@@ -100,8 +100,7 @@
       <HintPath>packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SSN_Angular_Script_Util_Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\SSN_Angular_Script_Util_Framework.1.0.2\lib\net472\SSN_Angular_Script_Util_Framework.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>packages\SSN_Angular_Script_Util_Framework.1.0.4\lib\net472\SSN_Angular_Script_Util_Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
